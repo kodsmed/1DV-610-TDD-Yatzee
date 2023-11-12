@@ -32,24 +32,24 @@ describe('FaceValueScoreStrategy', () => {
 
 function populateThrowResults() {
   const throwResults = [];
-    throwResults.push(ThrowResult([1, 1, 1, 1, 1, 1]));
-    throwResults.push(ThrowResult([2, 2, 2, 2, 2, 2]));
-    throwResults.push(ThrowResult([3, 3, 3, 3, 3, 3]));
-    throwResults.push(ThrowResult([4, 4, 4, 4, 4, 4]));
-    throwResults.push(ThrowResult([5, 5, 5, 5, 5, 5]));
-    throwResults.push(ThrowResult([6, 6, 6, 6, 6, 6]));
-    throwResults.push(ThrowResult([1, 2, 3, 4, 5, 6]));
-    throwResults.push(ThrowResult([6, 5, 4, 3, 2, 1]));
-    throwResults.push(ThrowResult([1, 1, 1, 2, 2, 2]));
-    throwResults.push(ThrowResult([1, 1, 1, 1, 2, 2]));
-    throwResults.push(ThrowResult([1, 1, 1, 1, 1, 2]));
-    throwResults.push(ThrowResult([1, 1, 1, 1, 2, 3]));
-    throwResults.push(ThrowResult([1, 1, 1, 2, 2, 3]));
-    throwResults.push(ThrowResult([1, 1, 2, 2, 2, 3]));
-    throwResults.push(ThrowResult([1, 2, 2, 2, 2, 3]));
-    throwResults.push(ThrowResult([1, 2, 3, 4, 5, 6]));
-    throwResults.push(ThrowResult([6, 5, 4, 3, 2, 1]));
-    throwResults.push(ThrowResult([1, 1, 1, 2, 2, 2]));
+  throwResults.push(ThrowResult([1, 1, 1, 1, 1, 1]));
+  throwResults.push(ThrowResult([2, 2, 2, 2, 2, 2]));
+  throwResults.push(ThrowResult([3, 3, 3, 3, 3, 3]));
+  throwResults.push(ThrowResult([4, 4, 4, 4, 4, 4]));
+  throwResults.push(ThrowResult([5, 5, 5, 5, 5, 5]));
+  throwResults.push(ThrowResult([6, 6, 6, 6, 6, 6]));
+  throwResults.push(ThrowResult([1, 2, 3, 4, 5, 6]));
+  throwResults.push(ThrowResult([6, 5, 4, 3, 2, 1]));
+  throwResults.push(ThrowResult([1, 1, 1, 2, 2, 2]));
+  throwResults.push(ThrowResult([1, 1, 1, 1, 2, 2]));
+  throwResults.push(ThrowResult([1, 1, 1, 1, 1, 2]));
+  throwResults.push(ThrowResult([1, 1, 1, 1, 2, 3]));
+  throwResults.push(ThrowResult([1, 1, 1, 2, 2, 3]));
+  throwResults.push(ThrowResult([1, 1, 2, 2, 2, 3]));
+  throwResults.push(ThrowResult([1, 2, 2, 2, 2, 3]));
+  throwResults.push(ThrowResult([1, 2, 3, 4, 5, 6]));
+  throwResults.push(ThrowResult([6, 5, 4, 3, 2, 1]));
+  throwResults.push(ThrowResult([1, 1, 1, 2, 2, 2]));
   return throwResults;
 }
 

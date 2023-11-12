@@ -44,7 +44,7 @@ function testScoresForPairs(numberOfPairs) {
 function populateExpectedScores(numberOfPairs) {
   const expectedScores = [];
   for (let i = 0; i < throwResults.length; i++) {
-    const rollNumbers = {1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6 : 0};
+    const rollNumbers = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0 };
     const rollResult = throwResults[i].rollResult;
     for (let j = 0; j < rollResult.length; j++) {
       rollNumbers[rollResult[j]]++;
@@ -67,24 +67,24 @@ function populateExpectedScores(numberOfPairs) {
 
 function populateThrowResults() {
   const throwResults = [];
-    throwResults.push(ThrowResult([1, 1, 1, 1, 1, 1]));
-    throwResults.push(ThrowResult([2, 2, 2, 2, 2, 2]));
-    throwResults.push(ThrowResult([3, 3, 3, 3, 3, 3]));
-    throwResults.push(ThrowResult([4, 4, 4, 4, 4, 4]));
-    throwResults.push(ThrowResult([5, 5, 5, 5, 5, 5]));
-    throwResults.push(ThrowResult([6, 6, 6, 6, 6, 6]));
-    throwResults.push(ThrowResult([1, 2, 3, 4, 5, 6]));
-    throwResults.push(ThrowResult([6, 5, 4, 3, 2, 1]));
-    throwResults.push(ThrowResult([1, 1, 1, 2, 2, 2]));
-    throwResults.push(ThrowResult([1, 1, 1, 1, 2, 2]));
-    throwResults.push(ThrowResult([1, 1, 1, 1, 1, 2]));
-    throwResults.push(ThrowResult([1, 1, 1, 1, 2, 3]));
-    throwResults.push(ThrowResult([1, 1, 1, 2, 2, 3]));
-    throwResults.push(ThrowResult([1, 1, 2, 2, 2, 3]));
-    throwResults.push(ThrowResult([1, 2, 2, 2, 3, 3]));
-    throwResults.push(ThrowResult([1, 2, 3, 4, 5, 6]));
-    throwResults.push(ThrowResult([6, 5, 4, 3, 2, 1]));
-    throwResults.push(ThrowResult([1, 1, 1, 2, 2, 2]));
+  throwResults.push(ThrowResult([1, 1, 1, 1, 1, 1]));
+  throwResults.push(ThrowResult([2, 2, 2, 2, 2, 2]));
+  throwResults.push(ThrowResult([3, 3, 3, 3, 3, 3]));
+  throwResults.push(ThrowResult([4, 4, 4, 4, 4, 4]));
+  throwResults.push(ThrowResult([5, 5, 5, 5, 5, 5]));
+  throwResults.push(ThrowResult([6, 6, 6, 6, 6, 6]));
+  throwResults.push(ThrowResult([1, 2, 3, 4, 5, 6]));
+  throwResults.push(ThrowResult([6, 5, 4, 3, 2, 1]));
+  throwResults.push(ThrowResult([1, 1, 1, 2, 2, 2]));
+  throwResults.push(ThrowResult([1, 1, 1, 1, 2, 2]));
+  throwResults.push(ThrowResult([1, 1, 1, 1, 1, 2]));
+  throwResults.push(ThrowResult([1, 1, 1, 1, 2, 3]));
+  throwResults.push(ThrowResult([1, 1, 1, 2, 2, 3]));
+  throwResults.push(ThrowResult([1, 1, 2, 2, 2, 3]));
+  throwResults.push(ThrowResult([1, 2, 2, 2, 3, 3]));
+  throwResults.push(ThrowResult([1, 2, 3, 4, 5, 6]));
+  throwResults.push(ThrowResult([6, 5, 4, 3, 2, 1]));
+  throwResults.push(ThrowResult([1, 1, 1, 2, 2, 2]));
   return throwResults;
 }
 
