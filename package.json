@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "An assignment in TestDrivenDevelopment, the end goal: the game Yatzee",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "dev-ts": "npx tsc --watch",
     "dev": "vite",
