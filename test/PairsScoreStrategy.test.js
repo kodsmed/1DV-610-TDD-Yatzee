@@ -57,6 +57,9 @@ function populateExpectedScores(numberOfPairs) {
         score += key * 2;
       }
     }
+    if (foundPairs < numberOfPairs) {
+      score = 0;
+    }
     expectedScores.push(score);
   }
   return expectedScores;
