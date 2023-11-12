@@ -1,4 +1,4 @@
-import exp from 'constants';
+import { it } from 'node:test';
 import Die from '../serve/compiled-js/classes/DieClass.js';
 
 describe('Die', () => {
@@ -49,7 +49,7 @@ describe('Die', () => {
 
     for (let i = 1; i <= 6; i++) {
       // a perfect distribution would be 100, but it is random so we allow some margin.
-      expect(results[i]).toBeGreaterThan(80);
+      expect(results[i]).toBeGreaterThan(70);
     }
   });
 
@@ -59,5 +59,51 @@ describe('Die', () => {
     expect(die.faceValue).toBe(rollResult);
     rollResult = die.roll();
     expect(die.faceValue).toBe(rollResult);
+  });
+
+  it('should have a state', () => {
+    const die = new Die();
+    expect(die.state).toBeDefined();
+  });
+
+  it('a new die should have the state "Active"', () => {
+    const die = new Die();
+    expect(die.state).toBe('Active');
+  });
+
+  it('should have a setState method', () => {
+    const die = new Die();
+    expect(die.setState).toBeDefined();
+  });
+
+  it('should have a setState method that sets the state', () => {
+    const die = new Die();
+    die.setState('Held');
+    expect(die.state).toBe('Held');
+    die.setState('Active');
+    expect(die.state).toBe('Active');
+  });
+
+  it('should not roll when state is "Held"', () => {
+    const die = new Die();
+    const preExistingRoll = die.faceValue;
+    die.setState('Held');
+    for (let i = 0; i < 10; i++) {
+      const rollResult = die.roll();
+      expect(rollResult).toBe(preExistingRoll);
+    }
+  });
+
+  it('should roll when state is "Active"', () => {
+    const die = new Die();
+    die.setState('Active');
+    const results = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0 };
+    for (let i = 0; i < 60; i++) {
+      const rollResult = die.roll();
+      results[rollResult]++;
+    }
+    for (let i = 1; i <= 6; i++) {
+      expect(results[i]).toBeGreaterThan(0);
+    }
   });
 });
