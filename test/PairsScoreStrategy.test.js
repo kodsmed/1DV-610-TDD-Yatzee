@@ -34,7 +34,7 @@ function testScoresForPairs(numberOfPairs) {
   describe(`when the number of pairs is ${numberOfPairs}`, () => {
     const expectedScores = populateExpectedScores(numberOfPairs);
     for (let i = 0; i < throwResults.length; i++) {
-      it(`should return ${expectedScores[i]} for ${throwResults[i].rollResult}`, () => {
+      it(`should return ${expectedScores[i]} for ${throwResults[i].rollResult} when expecting ${numberOfPairs} pair(s)`, () => {
         testScore(expectedScores[i], throwResults[i], numberOfPairs)
       })
     }
@@ -88,5 +88,5 @@ function populateThrowResults() {
 function testScore(score, throwResult, numberOfPairs) {
   let scoreStrategy = new PairsScoreStrategy(numberOfPairs, throwResult);
   let scoreResult = scoreStrategy.score;
-  expect.scoreResult.toBe(score);
+  expect(scoreResult).toBe(score);
 }
