@@ -57,7 +57,7 @@ function testScoresForFaceValue(faceValue) {
   describe(`when the face value is ${faceValue}`, () => {
     const expectedScores = populateExpectedScores(faceValue);
     for (let i = 0; i < throwResults.length; i++) {
-      it(`should return ${expectedScores[i]} for ${throwResults[i].rollResult}`, () => {
+      it(`should return ${expectedScores[i]} for ${throwResults[i].rollResult} when scored as: ${faceValue}s`, () => {
         testScore(expectedScores[i], throwResults[i], faceValue);
       });
     }
