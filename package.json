@@ -1,0 +1,40 @@
+{
+  "name": "tdd-yatzee",
+  "version": "1.0.0",
+  "description": "An assignment in TestDrivenDevelopment, the end goal: the game Yatzee",
+  "main": "index.js",
+  "scripts": {
+    "dev-ts": "npx tsc --watch",
+    "dev": "vite",
+    "build-ts": "npx tsc",
+    "build": "vite build",
+    "start": "vite",
+    "test": "npx --node-options=--experimental-vm-modules jest || exit 0"
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kodsmed/1DV-610-TDD-Yatzee.git"
+  },
+  "keywords": [
+    "TDD",
+    "Test",
+    "Driven",
+    "Development",
+    "Yatzee",
+    "WebApplication"
+  ],
+  "author": "Adam Sjöström, Jimmy Karlsson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kodsmed/1DV-610-TDD-Yatzee/issues"
+  },
+  "homepage": "https://github.com/kodsmed/1DV-610-TDD-Yatzee#readme",
+  "devDependencies": {
+    "@types/node": "^20.9.0",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "typescript": "^5.2.2",
+    "vite": "^4.5.0"
+  }
+}

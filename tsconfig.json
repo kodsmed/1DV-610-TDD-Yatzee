@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "forceConsistentCasingInFileNames": true,
+    "esModuleInterop": true,
+    "allowJs": true,
+    "strict": true,
+    "target": "ESNext",
+    "module": "Node16",
+    "outDir": "serve/compiled-js",
+    "declaration": true,
+    "sourceMap": true,
+    "skipLibCheck": true
+  },
+  "include": ["src/**/*.*"],
+  "exclude": ["node_modules"]
+}
