@@ -17,7 +17,7 @@ describe('YatzeeScoreStrategy', () => {
   });
 
   it('should return a number', () => {
-    const scoreStrategy = new YatzeeScoreStrategy(1, throwResults[0]);
+    const scoreStrategy = new YatzeeScoreStrategy(throwResults[0]);
     const score = scoreStrategy.score;
     expect(typeof score).toBe('number');
   });
