@@ -68,7 +68,7 @@ describe('Die', () => {
 
   it('a new die should have the state "Active"', () => {
     const die = new Die();
-    expect(die.state).toBe(DieState.Active.Active);
+    expect(die.state).toBe(DieState.Active);
   });
 
   it('should have a setState method', () => {
