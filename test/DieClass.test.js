@@ -1,5 +1,5 @@
 import { it } from 'node:test';
-import Die from '../serve/compiled-js/classes/DieClass.js';
+import Die, { DieState } from '../serve/compiled-js/classes/DieClass.js';
 
 describe('Die', () => {
 
@@ -68,7 +68,7 @@ describe('Die', () => {
 
   it('a new die should have the state "Active"', () => {
     const die = new Die();
-    expect(die.state).toBe('Active');
+    expect(die.state).toBe(DieState.Active.Active);
   });
 
   it('should have a setState method', () => {
@@ -78,16 +78,16 @@ describe('Die', () => {
 
   it('should have a setState method that sets the state', () => {
     const die = new Die();
-    die.setState('Held');
-    expect(die.state).toBe('Held');
+    die.setState(DieState.Held);
+    expect(die.state).toBe(DieState.Held);
     die.setState('Active');
-    expect(die.state).toBe('Active');
+    expect(die.state).toBe(DieState.Active);
   });
 
   it('should not roll when state is "Held"', () => {
     const die = new Die();
     const preExistingRoll = die.faceValue;
-    die.setState('Held');
+    die.setState(DieState.Held);
     for (let i = 0; i < 10; i++) {
       const rollResult = die.roll();
       expect(rollResult).toBe(preExistingRoll);
@@ -96,7 +96,7 @@ describe('Die', () => {
 
   it('should roll when state is "Active"', () => {
     const die = new Die();
-    die.setState('Active');
+    die.setState(DieState.Active);
     const results = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0 };
     for (let i = 0; i < 60; i++) {
       const rollResult = die.roll();
