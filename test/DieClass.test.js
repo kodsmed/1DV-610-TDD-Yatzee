@@ -1,4 +1,3 @@
-import { it } from 'node:test';
 import Die, { DieState } from '../serve/compiled-js/classes/DieClass.js';
 
 describe('Die', () => {
