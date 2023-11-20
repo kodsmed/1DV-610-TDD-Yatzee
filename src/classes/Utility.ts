@@ -3,6 +3,10 @@ export default class Utility {
     const elementCount = new Map();
     let groups = [] as Array<number>;
 
+    if (expectedOfAKind > 2) {
+      return groups;
+    }
+
     // Count the occurrences of each element
     numbers.forEach(element => {
       if (!elementCount.has(element)) {
@@ -19,6 +23,5 @@ export default class Utility {
     });
 
     return groups;
-
   }
 }
