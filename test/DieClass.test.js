@@ -60,11 +60,14 @@ describe('Die', () => {
   });
 
   it('should remember the last roll', () => {
+    const returnOne = () => 1;
+    const returnTwo = () => 2;
+
     const die = new Die();
-    let rollResult = die.roll();
-    expect(die.faceValue).toBe(rollResult);
-    rollResult = die.roll();
-    expect(die.faceValue).toBe(rollResult);
+    let rollResult = die.roll(returnTwo);
+    expect(die.faceValue).toBe(2);
+    rollResult = die.roll(returnOne);
+    expect(die.faceValue).toBe(1);
   });
 
   it('should have a state', () => {
@@ -86,30 +89,28 @@ describe('Die', () => {
     const die = new Die();
     die.setState(DieState.Held);
     expect(die.state).toBe(DieState.Held);
-    die.setState('Active');
+    die.setState(DieState.Active);
     expect(die.state).toBe(DieState.Active);
   });
 
   it('should not roll when state is "Held"', () => {
-    const die = new Die();
+    const returnOne = () => 1;
+    const returnFive = () => 5;
+    const die = new Die(returnOne);
     const preExistingRoll = die.faceValue;
     die.setState(DieState.Held);
-    for (let i = 0; i < 10; i++) {
-      const rollResult = die.roll();
-      expect(rollResult).toBe(preExistingRoll);
-    }
+
+    const rollResult = die.roll(returnFive);
+    expect(rollResult).toBe(preExistingRoll)
   });
 
   it('should roll when state is "Active"', () => {
-    const die = new Die();
+    const returnOne = () => 1;
+    const returnFive = () => 5;
+    const die = new Die(returnOne);
+    expect(die.faceValue).toBe(1);
     die.setState(DieState.Active);
-    const results = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0 };
-    for (let i = 0; i < 60; i++) {
-      const rollResult = die.roll();
-      results[rollResult]++;
-    }
-    for (let i = 1; i <= 6; i++) {
-      expect(results[i]).toBeGreaterThan(0);
-    }
+    const rollResult = die.roll(returnFive);
+    expect(rollResult).toBe(5);
   });
 });
