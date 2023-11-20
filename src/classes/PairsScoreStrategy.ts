@@ -1,5 +1,6 @@
 import ScoreStrategy from "../ScoreStrategy.js";
 import ThrowResult from "./ThrowResult.js";
+import Utility from "./Utility.js";
 
 export default class PairsScoreStrategy implements ScoreStrategy {
   #expectedNumber: number;
@@ -12,7 +13,9 @@ export default class PairsScoreStrategy implements ScoreStrategy {
 
   get score(): number {
     let score: number = 0;
-    const pairs = this.findPairs(this.#throwResult.rollResult as Array<number>);
+    const utilities = new Utility();
+    const pairs = utilities.findOfAKind(this.#throwResult.rollResult as Array<number>, 2);
+
     if (pairs.length < this.#expectedNumber) {
       return 0;
     }
@@ -26,25 +29,4 @@ export default class PairsScoreStrategy implements ScoreStrategy {
     return score;
   }
 
-  private findPairs(numbers: Array<number>): Array<number> {
-    const elementCount = new Map();
-    let pairs = [] as Array<number>;
-
-    // Count the occurrences of each element
-    numbers.forEach(element => {
-      if (!elementCount.has(element)) {
-        elementCount.set(element, 0);
-      }
-      elementCount.set(element, elementCount.get(element) + 1);
-    });
-
-    // Find elements that have exactly 2 occurrences (a pair)
-    elementCount.forEach((count, element) => {
-      if (count >= 2) {
-        pairs.push(element);
-      }
-    });
-
-    return pairs;
-  }
 }

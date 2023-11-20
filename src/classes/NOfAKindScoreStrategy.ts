@@ -1,5 +1,6 @@
 import ThrowResult from "./ThrowResult.js";
 import ScoreStrategy from "../ScoreStrategy.js";
+import Utility from "./Utility.js";
 
 export default class NOfAKindScoreStrategy implements ScoreStrategy {
   #expectedOfAKind: number;
@@ -12,7 +13,8 @@ export default class NOfAKindScoreStrategy implements ScoreStrategy {
 
   get score(): number {
     let score: number = 0;
-    const groups = this.findOfAKind(this.#throwResult.rollResult as Array<number>);
+    const utilities = new Utility();
+    const groups = utilities.findOfAKind(this.#throwResult.rollResult as Array<number>, this.#expectedOfAKind);
     if (groups.length === 0) {
       return score;
     } else if (groups.length > 1) {
@@ -23,27 +25,5 @@ export default class NOfAKindScoreStrategy implements ScoreStrategy {
     score += groups[0] * this.#expectedOfAKind;
 
     return score;
-  }
-
-  private findOfAKind(numbers: Array<number>): Array<number> {
-    const elementCount = new Map();
-    let groups = [] as Array<number>;
-
-    // Count the occurrences of each element
-    numbers.forEach(element => {
-      if (!elementCount.has(element)) {
-        elementCount.set(element, 0);
-      }
-      elementCount.set(element, elementCount.get(element) + 1);
-    });
-
-    // Find elements that have exactly 2 occurrences (a pair)
-    elementCount.forEach((count, element) => {
-      if (count >= this.#expectedOfAKind) {
-        groups.push(element);
-      }
-    });
-
-    return groups;
   }
 }
