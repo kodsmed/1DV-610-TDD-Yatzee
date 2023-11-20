@@ -3,9 +3,6 @@ export default class Utility {
     const elementCount = new Map();
     let groups = [] as Array<number>;
 
-    if (expectedOfAKind > 2) {
-      return groups;
-    }
 
     // Count the occurrences of each element
     numbers.forEach(element => {
@@ -17,7 +14,7 @@ export default class Utility {
 
     // Find elements that have exactly 2 occurrences (a pair)
     elementCount.forEach((count, element) => {
-      if (count >= 2) {
+      if (count >= expectedOfAKind) {
         groups.push(element);
       }
     });
