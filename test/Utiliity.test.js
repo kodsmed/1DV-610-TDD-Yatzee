@@ -5,7 +5,7 @@ describe('Utility', () => {
     it ('should return an array', () => {
       const utility = new Utility();
       const arrayToSearch = [1, 2, 3, 4, 5, 6];
-      const requiredOfAKind = 3;
+      const requiredOfAKind = 2;
       const result = utility.findOfAKind(arrayToSearch, requiredOfAKind);
       expect(Array.isArray(result)).toBe(true);
     });
@@ -40,6 +40,14 @@ describe('Utility', () => {
       const requiredOfAKind = 3;
       const result = utility.findOfAKind(arrayToSearch, requiredOfAKind);
       expect(result).toEqual([]);
+    });
+
+    it ('should return an array of [2,5] if the array is [2, 5, 5, 2, 5, 2] and the requiredOfAKind is 3', () => {
+      const utility = new Utility();
+      const arrayToSearch = [2, 5, 5, 2, 5, 2];
+      const requiredOfAKind = 3;
+      const result = utility.findOfAKind(arrayToSearch, requiredOfAKind);
+      expect(result).toEqual([2, 5]);
     });
   });
 });
