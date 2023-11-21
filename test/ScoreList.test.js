@@ -151,6 +151,11 @@ describe ('ScoreList', () => {
       expect(scoreList.house).toBeDefined();
     });
 
+    it ('should have the property "villa"', () => {
+      const scoreList = new ScoreList();
+      expect(scoreList.villa).toBeDefined();
+    });
+
   });
 
 });
