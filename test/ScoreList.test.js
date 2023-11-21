@@ -166,6 +166,11 @@ describe ('ScoreList', () => {
       expect(scoreList.chance).toBeDefined();
     });
 
+    it ('should have the property "yatzee"', () => {
+      const scoreList = new ScoreList();
+      expect(scoreList.yahtzee).toBeDefined();
+    });
+
   });
 
 });
