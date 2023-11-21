@@ -29,6 +29,7 @@ export default class ScoreList {
   villa: any;
   tower: any;
   chance: any;
+  yatzee: any;
 
   constructor() {
     this.ones = null;
@@ -50,5 +51,6 @@ export default class ScoreList {
     this.villa = null;
     this.tower = null;
     this.chance = null;
+    this.yatzee = null;
   }
 }
