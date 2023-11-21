@@ -136,6 +136,11 @@ describe ('ScoreList', () => {
       expect(scoreList.smallStraight).toBeDefined();
     });
 
+    it ('should have the property "largeStraight"', () => {
+      const scoreList = new ScoreList();
+      expect(scoreList.largeStraight).toBeDefined();
+    });
+
   });
 
 });
