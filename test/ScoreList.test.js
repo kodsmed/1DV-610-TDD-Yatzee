@@ -168,7 +168,7 @@ describe ('ScoreList', () => {
 
     it ('should have the property "yatzee"', () => {
       const scoreList = new ScoreList();
-      expect(scoreList.yahtzee).toBeDefined();
+      expect(scoreList.yatzee).toBeDefined();
     });
 
   });
