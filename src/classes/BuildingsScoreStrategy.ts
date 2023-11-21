@@ -5,7 +5,10 @@ export enum BuildingsStrategyType {
 }
 
 export default class BuildingsScoreStrategy {
-  constructor(type: BuildingsStrategyType) {
-    throw new Error("Not implemented");
+  constructor(type: BuildingsStrategyType, throwResult: Array<number>) {
+  }
+
+  public get score(): number {
+    return -1;
   }
 }

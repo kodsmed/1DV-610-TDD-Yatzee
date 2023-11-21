@@ -1,9 +1,7 @@
-
-import { it } from 'node:test';
 import BuildingsScoreStrategy, { BuildingsStrategyType } from '../serve/compiled-js/classes/BuildingsScoreStrategy.js';
 
 describe('BuildingsScoreStrategy', () => {
-  it('should return a number', () => {
+  it ('should return a number', () => {
     const scoreStrategy = new BuildingsScoreStrategy(
       BuildingsStrategyType.House,
       [1, 2, 3, 4, 5, 6]
@@ -12,5 +10,12 @@ describe('BuildingsScoreStrategy', () => {
     expect(typeof score).toBe('number');
   });
 
-
+  it ('should return the score for a house', () => {
+    const scoreStrategy = new BuildingsScoreStrategy(
+      BuildingsStrategyType.House,
+      [4, 4, 4, 3, 3, 2]
+    );
+    const score = scoreStrategy.score;
+    expect(score).toBe(18);
+  });
 });
