@@ -9,4 +9,9 @@ import ChanceScoreStrategy from "./ChanceScoreStrategy.js";
 import NullScoreStrategy from "./NullScoreStrategy.js";
 
 export default class ScoreList {
+  ones: any;
+
+  constructor() {
+    this.ones = null;
+  }
 }
