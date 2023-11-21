@@ -20,6 +20,7 @@ export default class ScoreList {
   twoPairs: any;
   threePairs: any;
   threeOfAKind: any;
+  fourOfAKind: any;
 
   constructor() {
     this.ones = null;
@@ -32,5 +33,6 @@ export default class ScoreList {
     this.twoPairs = null;
     this.threePairs = null;
     this.threeOfAKind = null;
+    this.fourOfAKind = null;
   }
 }
