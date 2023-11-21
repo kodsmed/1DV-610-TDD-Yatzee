@@ -1,6 +1,5 @@
-import { expect, jest } from '@jest/globals'
+import { jest } from '@jest/globals';
 import PairsScoreStrategy from '../serve/compiled-js/classes/PairsScoreStrategy.js'
-import { describe } from 'node:test'
 
 // Mock ThrowResult class so we can control the rollResult
 const ThrowResult = jest.fn().mockImplementation((rollResult) => {

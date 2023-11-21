@@ -1,6 +1,6 @@
-import { expect, jest } from '@jest/globals'
+import { jest } from '@jest/globals';
 import YatzeeScoreStrategy from '../serve/compiled-js/classes/YatzeeScoreStrategy.js';
-import { describe } from 'node:test';
+
 
 // Mock the ThrowResult class so we can control the rollResult
 const ThrowResult = jest.fn().mockImplementation((rollResult) => {

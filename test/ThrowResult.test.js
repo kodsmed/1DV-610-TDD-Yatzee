@@ -1,4 +1,4 @@
-import { expect, jest } from '@jest/globals'
+import { jest } from '@jest/globals';
 import ThrowResult from '../serve/compiled-js/classes/ThrowResult.js';
 
 // Mocking the Die class so we can control the faceValue
