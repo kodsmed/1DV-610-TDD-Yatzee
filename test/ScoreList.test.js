@@ -73,6 +73,12 @@ describe ('ScoreList', () => {
       const scoreList = new ScoreList();
       expect(scoreList.twos).toBeDefined();
     });
+
+    it ('should have the property "threes"', () => {
+      const scoreList = new ScoreList();
+      expect(scoreList.threes).toBeDefined();
+    });
+
   });
 
 });
