@@ -53,4 +53,6 @@ export default class ScoreList {
     this.chance = new NullScoreStrategy();
     this.yatzee = new NullScoreStrategy();
   }
+
+  // TODO: IMPLEMENT SETTERS
 }
