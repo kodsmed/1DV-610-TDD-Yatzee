@@ -104,6 +104,11 @@ describe ('ScoreList', () => {
       expect(scoreList.twoPairs).toBeDefined();
     });
 
+    it ('should have the property "threePairs"', () => {
+      const scoreList = new ScoreList();
+      expect(scoreList.threePairs).toBeDefined();
+    });
+
   });
 
 });
