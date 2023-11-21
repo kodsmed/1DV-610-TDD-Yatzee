@@ -21,51 +21,36 @@ export default class BuildingsScoreStrategy {
     let score = 0;
 
     if (this.#type === BuildingsStrategyType.House) {
-      const threeOfAKinds = this.#utility.findOfAKind(this.#throwResult, 3);
-      const pairs = this.#utility.findOfAKind(this.#throwResult, 2);
-
-      // Remove the pair that is part of the three of a kind.
-      for (let i = 0; i < pairs.length; i++) {
-        if (pairs[i] == threeOfAKinds[0]) {
-          pairs.splice(i, 1);
-          break;
-        }
-      }
-
-      if (threeOfAKinds.length >= 1 && pairs.length === 1) {
-        score = threeOfAKinds[0] * 3 + pairs[0] * 2;
-      }
-      return score;
+      score = this.getBuildingScore(3, 2);
     }
 
     if (this.#type === BuildingsStrategyType.Villa) {
-      let score = 0;
-      const threeOfAKinds = this.#utility.findOfAKind(this.#throwResult, 3);
-
-      if (threeOfAKinds.length === 2) {
-        score = threeOfAKinds[0] * 3 + threeOfAKinds[1] * 3;
-      }
-
-      return score;
+      score = this.getBuildingScore(3, 3);
     }
 
     if (this.#type === BuildingsStrategyType.Tower) {
-      const fourOfAKinds = this.#utility.findOfAKind(this.#throwResult, 4);
-      const pairs = this.#utility.findOfAKind(this.#throwResult, 2);
-
-      // Remove the pair that is part of the three of a kind.
-      for (let i = 0; i < pairs.length; i++) {
-        if (pairs[i] == fourOfAKinds[0]) {
-          pairs.splice(i, 1);
-          break;
-        }
-      }
-
-      if (fourOfAKinds.length === 1 && pairs.length === 1) {
-        score = fourOfAKinds[0] * 4 + pairs[0] * 2;
-      }
+      score = this.getBuildingScore(4, 2);
     }
 
     return score;
+  }
+
+  private getBuildingScore(groupSizeA: number, groupSizeB: number): number {
+    const groupA = this.#utility.findOfAKind(this.#throwResult, groupSizeA);
+    const groupB = this.#utility.findOfAKind(this.#throwResult, groupSizeB);
+
+    // Remove the highest value of groupB if it is part of groupA.
+    for (let i = 0; i < groupB.length; i++) {
+      if (groupB[i] == groupA[0]) {
+        groupB.splice(i, 1);
+        break;
+      }
+    }
+
+    if (groupA.length >= 1 && groupB.length === 1) {
+      return groupA[0] * groupSizeA + groupB[0] * groupSizeB;
+    }
+
+    return 0;
   }
 }
