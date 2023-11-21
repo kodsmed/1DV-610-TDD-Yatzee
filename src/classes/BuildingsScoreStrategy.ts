@@ -21,5 +21,9 @@ export default class BuildingsScoreStrategy {
     if (this.#type === BuildingsStrategyType.Villa) {
       return 21;
     }
+
+    if (this.#type === BuildingsStrategyType.Tower) {
+      return 22;
+    }
   }
 }
