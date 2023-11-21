@@ -1,4 +1,6 @@
 import Utility from "./Utility.js";
+import ScoreStrategy from "./../ScoreStrategy.js";
+import ThrowResult from './ThrowResult.js';
 
 export enum BuildingsStrategyType {
   House,
@@ -6,14 +8,14 @@ export enum BuildingsStrategyType {
   Tower
 }
 
-export default class BuildingsScoreStrategy {
+export default class BuildingsScoreStrategy implements ScoreStrategy {
   #type: BuildingsStrategyType;
   #throwResult: Array<number>;
   #utility: Utility;
 
-  constructor(type: BuildingsStrategyType, throwResult: Array<number>) {
+  constructor(type: BuildingsStrategyType, throwResult: ThrowResult) {
     this.#type = type;
-    this.#throwResult = throwResult;
+    this.#throwResult = throwResult.rollResult;
     this.#utility = new Utility();
   }
 
@@ -36,8 +38,14 @@ export default class BuildingsScoreStrategy {
   }
 
   private getBuildingScore(groupSizeA: number, groupSizeB: number): number {
-    const groupA = this.#utility.findOfAKind(this.#throwResult, groupSizeA);
-    const groupB = this.#utility.findOfAKind(this.#throwResult, groupSizeB);
+    const groupA = this.#utility.findOfAKind(
+      this.#throwResult,
+      groupSizeA
+    );
+    const groupB = this.#utility.findOfAKind(
+      this.#throwResult,
+      groupSizeB
+    );
 
     // Remove the highest value of groupB if it is part of groupA.
     for (let i = 0; i < groupB.length; i++) {

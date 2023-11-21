@@ -1,7 +1,7 @@
 import Die from './DieClass.js';
 
 export default class ThrowResult {
-  rollResult: Array<Number>;
+  rollResult: Array<number>;
 
   constructor(dice: Array<Die>) {
     this.rollResult = [];
