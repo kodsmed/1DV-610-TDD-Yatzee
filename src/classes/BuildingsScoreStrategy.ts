@@ -22,7 +22,9 @@ export default class BuildingsScoreStrategy {
     }
 
     if (this.#type === BuildingsStrategyType.Villa) {
-      score = 21;
+      if (this.#throwResult[3] === this.#throwResult[4]) {
+        score = 21;
+      }
     }
 
     if (this.#type === BuildingsStrategyType.Tower) {
