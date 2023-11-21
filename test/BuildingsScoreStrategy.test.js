@@ -19,6 +19,15 @@ describe('BuildingsScoreStrategy', () => {
     expect(score).toBe(4 + 4 + 4 + 3 + 3);
   });
 
+  it ('should return 0 for a broken house', () => {
+    const scoreStrategy = new BuildingsScoreStrategy(
+      BuildingsStrategyType.House,
+      [1, 2, 3, 4, 5, 6]
+    );
+    const score = scoreStrategy.score;
+    expect(score).toBe(0);
+  });
+
   it ('should return the score for a Villa', () => {
     const scoreStrategy = new BuildingsScoreStrategy(
       BuildingsStrategyType.Villa,
