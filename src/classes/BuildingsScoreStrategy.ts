@@ -22,17 +22,7 @@ export default class BuildingsScoreStrategy {
 
     if (this.#type === BuildingsStrategyType.House) {
       const threeOfAKinds = this.#utility.findOfAKind(this.#throwResult, 3);
-      // If there is no three of a kind, there is no score.
-      if (threeOfAKinds.length < 1) {
-        return score;
-      }
-
       const pairs = this.#utility.findOfAKind(this.#throwResult, 2);
-      // If there is no pair, there is no score. The three of a kind will be found as a pair.
-      // hence the check for pairs.length < 2.
-      if (pairs.length < 2) {
-        return score;
-      }
 
       // Remove the pair that is part of the three of a kind.
       for (let i = 0; i < pairs.length; i++) {
@@ -42,7 +32,9 @@ export default class BuildingsScoreStrategy {
         }
       }
 
-      score = threeOfAKinds[0] * 3 + pairs[0] * 2;
+      if (threeOfAKinds.length >= 1 && pairs.length === 1) {
+        score = threeOfAKinds[0] * 3 + pairs[0] * 2;
+      }
       return score;
     }
 
