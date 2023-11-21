@@ -19,6 +19,9 @@ export default class Utility {
       }
     });
 
+     //sort descending to get the highest pair first
+    groups.sort((a, b) => b - a);
+
     return groups;
   }
 }

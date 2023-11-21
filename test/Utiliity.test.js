@@ -41,9 +41,9 @@ describe('Utility', () => {
     const testRequiredOfAKind = [2, 3, 3, 4, 4, 5, 5, 6, 6];
 
     const testExpectedResults = [
-      [1, 2, 3],
+      [3, 2, 1],
       [],
-      [2, 5],
+      [5, 2],
       [2],
       [],
       [2],
