@@ -107,7 +107,7 @@ describe('BuildingsScoreStrategy', () => {
     );
     const score = scoreStrategy.score;
     expect(score).toBe(5 + 5 + 5 + 5 + 6 + 6);
-  }
+  });
 
   it ('should return 0 for a broken Tower', () => {
     const scoreStrategy = new BuildingsScoreStrategy(
