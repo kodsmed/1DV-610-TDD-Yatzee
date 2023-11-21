@@ -1,7 +1,7 @@
 import ScoreStrategy from "../ScoreStrategy.js";
 
-export default class NullScoreStrategy {
+export default class NullScoreStrategy implements ScoreStrategy{
   get score() {
-    return 'a';
+    return NaN;
   }
 }

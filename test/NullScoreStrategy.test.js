@@ -8,4 +8,9 @@ describe('NullScoreStrategy', () => {
     expect(typeof score).toBe('number');
   });
 
+  it ('should return 0', () => {
+    const scoreStrategy = new NullScoreStrategy();
+    const score = scoreStrategy.score;
+    expect(score).toBe(0);
+  });
 });
