@@ -99,6 +99,11 @@ describe ('ScoreList', () => {
       expect(scoreList.aPair).toBeDefined();
     });
 
+    it ('should have the property "twoPairs"', () => {
+      const scoreList = new ScoreList();
+      expect(scoreList.twoPairs).toBeDefined();
+    });
+
   });
 
 });
