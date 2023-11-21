@@ -14,16 +14,21 @@ export default class BuildingsScoreStrategy {
   }
 
   public get score(): number {
+    let score = 0;
     if (this.#type === BuildingsStrategyType.House) {
-      return 18;
+       if (this.#throwResult[0] === this.#throwResult[1]) {
+        score = 18;
+       }
     }
 
     if (this.#type === BuildingsStrategyType.Villa) {
-      return 21;
+      score = 21;
     }
 
     if (this.#type === BuildingsStrategyType.Tower) {
-      return 22;
+      score = 22;
     }
+
+    return score;
   }
 }
