@@ -39,9 +39,14 @@ export default class BuildingsScoreStrategy {
     }
 
     if (this.#type === BuildingsStrategyType.Villa) {
-      if (this.#throwResult[3] === this.#throwResult[4]) {
-        score = 21;
+      let score = 0;
+      const threeOfAKinds = this.#utility.findOfAKind(this.#throwResult, 3);
+
+      if (threeOfAKinds.length === 2) {
+        score = threeOfAKinds[0] * 3 + threeOfAKinds[1] * 3;
       }
+
+      return score;
     }
 
     if (this.#type === BuildingsStrategyType.Tower) {
