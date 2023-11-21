@@ -70,7 +70,6 @@ const YahtzeeScoreStrategy = jest.fn().mockImplementation((throwResult) => {
 describe ('ScoreList', () => {
 
  describe ('should have the desired properties', () => {
-
     it ('should have the property "ones"', () => {
       const scoreList = new ScoreList();
       expect(scoreList.ones).toBeDefined();
@@ -170,7 +169,29 @@ describe ('ScoreList', () => {
       const scoreList = new ScoreList();
       expect(scoreList.yatzee).toBeDefined();
     });
+  });
 
+  it ('should initialize all score-properties as NullScoreStrategy', () => {
+    const scoreList = new ScoreList();
+    let unexpectedProperties = [];
+    for (let property in scoreList) {
+      if (scoreList[property].constructor.name !== 'NullScoreStrategy') {
+        unexpectedProperties.push(property +' is ' + scoreList[property].constructor.name);
+      }
+    }
+
+    if (unexpectedProperties.length > 0) {
+      let message = 'The following properties were not initialized as NullScoreStrategy:\n';
+      for (let i = 0; i < unexpectedProperties.length; i++) {
+        message += unexpectedProperties[i];
+        if (i < unexpectedProperties.length - 1) {
+          message += ',\n';
+        }
+      }
+      console.log(message);
+    }
+
+    expect(unexpectedProperties.length).toBe(0);
   });
 
 });
