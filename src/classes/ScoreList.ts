@@ -12,10 +12,12 @@ export default class ScoreList {
   ones: any;
   twos: any;
   threes: any;
+  fours: any;
 
   constructor() {
     this.ones = null;
     this.twos = null;
     this.threes = null;
+    this.fours = null;
   }
 }
