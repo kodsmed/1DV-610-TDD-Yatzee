@@ -94,7 +94,7 @@ describe ('ScoreList', () => {
       expect(scoreList.sixes).toBeDefined();
     });
 
-    it ('should have the property "a pair"', () => {
+    it ('should have the property "aPair"', () => {
       const scoreList = new ScoreList();
       expect(scoreList.aPair).toBeDefined();
     });
