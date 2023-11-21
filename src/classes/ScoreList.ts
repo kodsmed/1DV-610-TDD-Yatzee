@@ -32,25 +32,25 @@ export default class ScoreList {
   yatzee: any;
 
   constructor() {
-    this.ones = null;
-    this.twos = null;
-    this.threes = null;
-    this.fours = null;
-    this.fives = null;
-    this.sixes = null;
-    this.aPair = null;
-    this.twoPairs = null;
-    this.threePairs = null;
-    this.threeOfAKind = null;
-    this.fourOfAKind = null;
-    this.fiveOfAKind = null;
-    this.smallStraight = null;
-    this.largeStraight = null;
-    this.fullStraight = null;
-    this.house = null;
-    this.villa = null;
-    this.tower = null;
-    this.chance = null;
-    this.yatzee = null;
+    this.ones = new NullScoreStrategy();
+    this.twos = new NullScoreStrategy();
+    this.threes = new NullScoreStrategy();
+    this.fours = new NullScoreStrategy();
+    this.fives = new NullScoreStrategy();
+    this.sixes = new NullScoreStrategy();
+    this.aPair = new NullScoreStrategy();
+    this.twoPairs = new NullScoreStrategy();
+    this.threePairs = new NullScoreStrategy();
+    this.threeOfAKind = new NullScoreStrategy();
+    this.fourOfAKind = new NullScoreStrategy();
+    this.fiveOfAKind = new NullScoreStrategy();
+    this.smallStraight = new NullScoreStrategy();
+    this.largeStraight = new NullScoreStrategy();
+    this.fullStraight = new NullScoreStrategy();
+    this.house = new NullScoreStrategy();
+    this.villa = new NullScoreStrategy();
+    this.tower = new NullScoreStrategy();
+    this.chance = new NullScoreStrategy();
+    this.yatzee = new NullScoreStrategy();
   }
 }
