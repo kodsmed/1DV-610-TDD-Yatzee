@@ -84,6 +84,11 @@ describe ('ScoreList', () => {
       expect(scoreList.fours).toBeDefined();
     });
 
+    it ('should have the property "fives"', () => {
+      const scoreList = new ScoreList();
+      expect(scoreList.fives).toBeDefined();
+    });
+
   });
 
 });
