@@ -25,6 +25,7 @@ export default class ScoreList {
   smallStraight: any;
   largeStraight: any;
   fullStraight: any;
+  house: any;
 
   constructor() {
     this.ones = null;
@@ -42,5 +43,6 @@ export default class ScoreList {
     this.smallStraight = null;
     this.largeStraight = null;
     this.fullStraight = null;
+    this.house = null;
   }
 }
