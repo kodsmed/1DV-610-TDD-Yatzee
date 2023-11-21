@@ -5,7 +5,7 @@ export enum BuildingsStrategyType {
 }
 
 export default class BuildingsScoreStrategy {
-  constructor() {
+  constructor(type: BuildingsStrategyType) {
     throw new Error("Not implemented");
   }
 }
