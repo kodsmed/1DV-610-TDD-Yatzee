@@ -10,8 +10,10 @@ import NullScoreStrategy from "./NullScoreStrategy.js";
 
 export default class ScoreList {
   ones: any;
+  twos: any;
 
   constructor() {
     this.ones = null;
+    this.twos = null;
   }
 }
