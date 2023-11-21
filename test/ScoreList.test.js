@@ -131,6 +131,11 @@ describe ('ScoreList', () => {
       expect(scoreList.fiveOfAKind).toBeDefined();
     });
 
+    it ('should have the propery "smallStraight"', () => {
+      const scoreList = new ScoreList();
+      expect(scoreList.smallStraight).toBeDefined();
+    });
+
   });
 
 });
