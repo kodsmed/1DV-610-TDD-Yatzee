@@ -159,8 +159,12 @@ describe ('ScoreList', () => {
     it ('should have the property "tower"', () => {
       const scoreList = new ScoreList();
       expect(scoreList.tower).toBeDefined();
-    }
-    )
+    });
+
+    it ('should have the property "chance"', () => {
+      const scoreList = new ScoreList();
+      expect(scoreList.chance).toBeDefined();
+    });
 
   });
 
