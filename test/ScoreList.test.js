@@ -126,6 +126,11 @@ describe ('ScoreList', () => {
       expect(scoreList.fourOfAKind).toBeDefined();
     });
 
+    it ('should have the property "fiveOfAKind"', () => {
+      const scoreList = new ScoreList();
+      expect(scoreList.fiveOfAKind).toBeDefined();
+    });
+
   });
 
 });
