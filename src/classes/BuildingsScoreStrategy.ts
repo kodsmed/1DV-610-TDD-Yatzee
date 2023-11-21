@@ -28,7 +28,9 @@ export default class BuildingsScoreStrategy {
     }
 
     if (this.#type === BuildingsStrategyType.Tower) {
-      score = 22;
+      if (this.#throwResult[4] === this.#throwResult[5]) {
+        score = 22;
+      }
     }
 
     return score;
