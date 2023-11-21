@@ -73,6 +73,7 @@ describe('BuildingsScoreStrategy', () => {
     expect(score).toBe(4 + 4 + 4 + 3 + 3 + 3);
   });
 
+  
   it ('should return the score for a Villa', () => {
     const scoreStrategy = new BuildingsScoreStrategy(
       BuildingsStrategyType.Villa,
