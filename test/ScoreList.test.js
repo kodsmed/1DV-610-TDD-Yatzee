@@ -131,7 +131,7 @@ describe ('ScoreList', () => {
       expect(scoreList.fiveOfAKind).toBeDefined();
     });
 
-    it ('should have the propery "smallStraight"', () => {
+    it ('should have the property "smallStraight"', () => {
       const scoreList = new ScoreList();
       expect(scoreList.smallStraight).toBeDefined();
     });
