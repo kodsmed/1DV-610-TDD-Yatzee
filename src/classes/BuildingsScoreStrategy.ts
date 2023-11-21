@@ -50,8 +50,19 @@ export default class BuildingsScoreStrategy {
     }
 
     if (this.#type === BuildingsStrategyType.Tower) {
-      if (this.#throwResult[4] === this.#throwResult[5]) {
-        score = 22;
+      const fourOfAKinds = this.#utility.findOfAKind(this.#throwResult, 4);
+      const pairs = this.#utility.findOfAKind(this.#throwResult, 2);
+
+      // Remove the pair that is part of the three of a kind.
+      for (let i = 0; i < pairs.length; i++) {
+        if (pairs[i] == fourOfAKinds[0]) {
+          pairs.splice(i, 1);
+          break;
+        }
+      }
+
+      if (fourOfAKinds.length === 1 && pairs.length === 1) {
+        score = fourOfAKinds[0] * 4 + pairs[0] * 2;
       }
     }
 
