@@ -24,6 +24,7 @@ export default class ScoreList {
   fiveOfAKind: any;
   smallStraight: any;
   largeStraight: any;
+  fullStraight: any;
 
   constructor() {
     this.ones = null;
@@ -40,5 +41,6 @@ export default class ScoreList {
     this.fiveOfAKind = null;
     this.smallStraight = null;
     this.largeStraight = null;
+    this.fullStraight = null;
   }
 }
