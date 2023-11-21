@@ -116,6 +116,16 @@ describe ('ScoreList', () => {
       expect(scoreList.threePairs).toBeDefined();
     });
 
+    it ('should have the property "threeOfAKind"', () => {
+      const scoreList = new ScoreList();
+      expect(scoreList.threeOfAKind).toBeDefined();
+    });
+
+    it ('should have the property "fourOfAKind"', () => {
+      const scoreList = new ScoreList();
+      expect(scoreList.fourOfAKind).toBeDefined();
+    });
+
   });
 
 });
