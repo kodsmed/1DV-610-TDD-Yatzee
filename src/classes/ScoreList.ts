@@ -6,6 +6,7 @@ import NOfAKindScoreStrategy from "./NOfAKindScoreStrategy.js";
 import StraitsScoreStrategy from "./StraitsScoreStrategy.js";
 import BuildingsScoreStrategy from "./BuildingsScoreStrategy.js";
 import ChanceScoreStrategy from "./ChanceScoreStrategy.js";
+import YatzeeScoreStrategy from "./YatzeeScoreStrategy.js";
 import NullScoreStrategy from "./NullScoreStrategy.js";
 
 export default class ScoreList {
@@ -18,6 +19,7 @@ export default class ScoreList {
   aPair: any;
   twoPairs: any;
   threePairs: any;
+  threeOfAKind: any;
 
   constructor() {
     this.ones = null;
@@ -29,5 +31,6 @@ export default class ScoreList {
     this.aPair = null;
     this.twoPairs = null;
     this.threePairs = null;
+    this.threeOfAKind = null;
   }
 }
