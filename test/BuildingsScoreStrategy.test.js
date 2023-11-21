@@ -73,7 +73,6 @@ describe('BuildingsScoreStrategy', () => {
     expect(score).toBe(4 + 4 + 4 + 3 + 3 + 3);
   });
 
-  
   it ('should return the score for a Villa', () => {
     const scoreStrategy = new BuildingsScoreStrategy(
       BuildingsStrategyType.Villa,
@@ -100,6 +99,15 @@ describe('BuildingsScoreStrategy', () => {
     const score = scoreStrategy.score;
     expect(score).toBe(4 + 4 + 4 + 4 + 3 + 3);
   });
+
+  it ('should return the score for a Tower', () => {
+    const scoreStrategy = new BuildingsScoreStrategy(
+      BuildingsStrategyType.Tower,
+      [5, 5, 5, 5, 6, 6]
+    );
+    const score = scoreStrategy.score;
+    expect(score).toBe(5 + 5 + 5 + 5 + 6 + 6);
+  }
 
   it ('should return 0 for a broken Tower', () => {
     const scoreStrategy = new BuildingsScoreStrategy(
