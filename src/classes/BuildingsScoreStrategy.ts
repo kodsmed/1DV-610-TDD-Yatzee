@@ -9,6 +9,7 @@ export default class BuildingsScoreStrategy {
   }
 
   public get score(): number {
-    return -1;
+
+    return 18;
   }
 }
