@@ -27,7 +27,7 @@ const BuildingsStrategyType = jest.fn().mockImplementation((strategyType) => {
 // Mock the ChanceScoreStrategy class so we can control the score.
 const ChanceScoreStrategy = jest.fn().mockImplementation((throwResult) => {
   return {
-    score: 1000000
+    score: 100000
   }
 });
 
@@ -57,6 +57,13 @@ const PairsScoreStrategy = jest.fn().mockImplementation((throwResult) => {
 const StraightsScoreStrategy = jest.fn().mockImplementation((straightType, throwResult) => {
   return {
     score: 1000
+  }
+});
+
+// Mock the YahtzeeScoreStrategy class so we can control the score.
+const YahtzeeScoreStrategy = jest.fn().mockImplementation((throwResult) => {
+  return {
+    score: 1000000
   }
 });
 
