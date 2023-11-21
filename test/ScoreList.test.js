@@ -194,4 +194,11 @@ describe ('ScoreList', () => {
     expect(unexpectedProperties.length).toBe(0);
   });
 
+  it ('should should throw and error if ones is set to a ScoreStrategy that is not FaceValueStrategy', () => {
+    const scoreList = new ScoreList();
+    expect(() => {
+      scoreList.ones = new BuildingsScoreStrategy(BuildingsStrategyType.ONES, ThrowResult([1, 1, 1, 1, 1, 1]));
+    }).toThrow();
+  });
+
 });
