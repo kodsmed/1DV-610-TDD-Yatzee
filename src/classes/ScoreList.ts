@@ -126,6 +126,10 @@ export default class ScoreList {
     return this.#threePairs.score;
   }
 
+  set threeOfAKind(scoreStrategy: ScoreStrategy) {
+    this.validateNOfAKindScoreStrategy(scoreStrategy);
+  }
+
   get threeOfAKind() {
     return this.#threeOfAKind.score;
   }
@@ -179,6 +183,12 @@ export default class ScoreList {
   private validatePairsScoreStrategy(scoreStrategy: ScoreStrategy) {
     if (scoreStrategy instanceof PairsScoreStrategy === false) {
       throw new Error(`Invalid score strategy: ${scoreStrategy.constructor.name}\nExpected: ${PairsScoreStrategy.name}`);
+    }
+  }
+
+  private validateNOfAKindScoreStrategy(scoreStrategy: ScoreStrategy) {
+    if (scoreStrategy instanceof NOfAKindScoreStrategy === false) {
+      throw new Error(`Invalid score strategy: ${scoreStrategy.constructor.name}\nExpected: ${NOfAKindScoreStrategy.name}`);
     }
   }
   // TODO: IMPLEMENT SETTERS
