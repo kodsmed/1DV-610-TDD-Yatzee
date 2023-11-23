@@ -102,6 +102,10 @@ export default class ScoreList {
     return this.#sixes.score;
   }
 
+  set aPair(scoreStrategy: ScoreStrategy) {
+    this.validatePairsScoreStrategy(scoreStrategy);
+  }
+
   get aPair() {
     return this.#aPair.score;
   }
@@ -161,6 +165,12 @@ export default class ScoreList {
   private validateFaceValuesScoreStrategy(scoreStrategy: ScoreStrategy) {
     if (scoreStrategy instanceof FaceValuesScoreStrategy === false) {
       throw new Error(`Invalid score strategy: ${scoreStrategy.constructor.name}\nExpected: ${FaceValuesScoreStrategy.name}`);
+    }
+  }
+
+  private validatePairsScoreStrategy(scoreStrategy: ScoreStrategy) {
+    if (scoreStrategy instanceof PairsScoreStrategy === false) {
+      throw new Error(`Invalid score strategy: ${scoreStrategy.constructor.name}\nExpected: ${PairsScoreStrategy.name}`);
     }
   }
   // TODO: IMPLEMENT SETTERS
