@@ -64,6 +64,12 @@ export default class ScoreList {
     return this.#ones.score;
   }
 
+  set twos(scoreStrategy: ScoreStrategy) {
+    if (scoreStrategy.constructor.name != 'FaceValuesScoreStrategy') {
+      throw new Error(`Invalid score strategy: ${scoreStrategy.constructor.name}\nExpected: ${FaceValuesScoreStrategy.name}`);
+    }
+  }
+
   get twos() {
     return this.#twos.score;
   }
