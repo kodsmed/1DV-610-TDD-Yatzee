@@ -55,9 +55,7 @@ export default class ScoreList {
   }
 
   set ones(scoreStrategy: ScoreStrategy) {
-    if (scoreStrategy.constructor.name != 'FaceValuesScoreStrategy') {
-      throw new Error(`Invalid score strategy: ${scoreStrategy.constructor.name}\nExpected: ${FaceValuesScoreStrategy.name}`);
-    }
+    this.validateFaceValuesScoreStrategy(scoreStrategy);
   }
 
   get ones() {
@@ -65,9 +63,7 @@ export default class ScoreList {
   }
 
   set twos(scoreStrategy: ScoreStrategy) {
-    if (scoreStrategy.constructor.name != 'FaceValuesScoreStrategy') {
-      throw new Error(`Invalid score strategy: ${scoreStrategy.constructor.name}\nExpected: ${FaceValuesScoreStrategy.name}`);
-    }
+    this.validateFaceValuesScoreStrategy(scoreStrategy);
   }
 
   get twos() {
@@ -75,9 +71,7 @@ export default class ScoreList {
   }
 
   set threes(scoreStrategy: ScoreStrategy) {
-    if (scoreStrategy.constructor.name != 'FaceValuesScoreStrategy') {
-      throw new Error(`Invalid score strategy: ${scoreStrategy.constructor.name}\nExpected: ${FaceValuesScoreStrategy.name}`);
-    }
+    this.validateFaceValuesScoreStrategy(scoreStrategy);
   }
 
   get threes() {
@@ -150,6 +144,12 @@ export default class ScoreList {
 
   get yatzee() {
     return this.#yatzee.score;
+  }
+
+  private validateFaceValuesScoreStrategy(scoreStrategy: ScoreStrategy) {
+    if (scoreStrategy instanceof FaceValuesScoreStrategy) {
+      throw new Error(`Invalid score strategy: ${scoreStrategy.constructor.name}\n Expected: ${FaceValuesScoreStrategy.name}`);
+    }
   }
   // TODO: IMPLEMENT SETTERS
 }
