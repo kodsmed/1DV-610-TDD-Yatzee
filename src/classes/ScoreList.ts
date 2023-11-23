@@ -1,6 +1,6 @@
 import ThrowResult from "./ThrowResult.js";
 import ScoreStrategy from "./../ScoreStrategy.js";
-import FacesValuesScoreStrategy from "./FaceValuesScoreStrategy.js";
+import FaceValuesScoreStrategy from "./FaceValuesScoreStrategy.js";
 import PairsScoreStrategy from "./PairsScoreStrategy.js";
 import NOfAKindScoreStrategy from "./NOfAKindScoreStrategy.js";
 import StraitsScoreStrategy from "./StraitsScoreStrategy.js";
@@ -54,6 +54,11 @@ export default class ScoreList {
     this.#yatzee = new NullScoreStrategy();
   }
 
+  set ones(scoreStrategy: ScoreStrategy) {
+    if (scoreStrategy.constructor.name != 'FaceValuesScoreStrategy') {
+      throw new Error(`Invalid score strategy: ${scoreStrategy.constructor.name}\nExpected: ${FaceValuesScoreStrategy.name}`);
+    }
+  }
 
   get ones() {
     return this.#ones.score;

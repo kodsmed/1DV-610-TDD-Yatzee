@@ -12,7 +12,10 @@ const ThrowResult = jest.fn().mockImplementation((rollResult) => {
 const BuildingsScoreStrategy = jest.fn().mockImplementation(
   (strategyType, throwResult) => {
     return {
-      score: 10000
+      score: 10000,
+      constructor: {
+        name: 'BuildingsScoreStrategy'
+      }
     }
   }
 );
@@ -34,9 +37,11 @@ const ChanceScoreStrategy = jest.fn().mockImplementation((throwResult) => {
 // Mock the FaceValueScoreStrategy class so we can control the score.
 const FaceValuesScoreStrategy = jest.fn().mockImplementation((faceValue, throwResult) => {
   return {
-    score: 1
+    score: 1,
+    constructor: {
+      name: 'FaceValuesScoreStrategy'
     }
-
+  }
 });
 
 // Mock NOfAKindScoreStrategy class so we can control the score.
@@ -198,7 +203,7 @@ describe ('ScoreList', () => {
     const scoreList = new ScoreList();
     expect(() => {
       scoreList.ones = new BuildingsScoreStrategy(BuildingsStrategyType.ONES, ThrowResult([1, 1, 1, 1, 1, 1]));
-    }).toThrow(new Error('Invalid score strategy: BuildingsScoreStrategy\nExpected: FacesValuesScoreStrategy'));
+    }).toThrow('Invalid score strategy: BuildingsScoreStrategy\nExpected: FacesValuesScoreStrategy');
   });
 
 });
