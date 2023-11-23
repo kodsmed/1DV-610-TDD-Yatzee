@@ -198,7 +198,7 @@ describe ('ScoreList', () => {
     const scoreList = new ScoreList();
     expect(() => {
       scoreList.ones = new BuildingsScoreStrategy(BuildingsStrategyType.ONES, ThrowResult([1, 1, 1, 1, 1, 1]));
-    }).toThrow();
+    }).toThrow(new Error('Invalid score strategy: BuildingsScoreStrategy\nExpected: FacesValuesScoreStrategy'));
   });
 
 });
