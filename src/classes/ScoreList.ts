@@ -78,6 +78,10 @@ export default class ScoreList {
     return this.#threes.score;
   }
 
+  set fours(scoreStrategy: ScoreStrategy) {
+    this.validateFaceValuesScoreStrategy(scoreStrategy);
+  }
+
   get fours() {
     return this.#fours.score;
   }
@@ -147,8 +151,8 @@ export default class ScoreList {
   }
 
   private validateFaceValuesScoreStrategy(scoreStrategy: ScoreStrategy) {
-    if (scoreStrategy instanceof FaceValuesScoreStrategy) {
-      throw new Error(`Invalid score strategy: ${scoreStrategy.constructor.name}\n Expected: ${FaceValuesScoreStrategy.name}`);
+    if (scoreStrategy instanceof FaceValuesScoreStrategy === false) {
+      throw new Error(`Invalid score strategy: ${scoreStrategy.constructor.name}\nExpected: ${FaceValuesScoreStrategy.name}`);
     }
   }
   // TODO: IMPLEMENT SETTERS
