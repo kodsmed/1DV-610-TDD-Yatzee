@@ -296,4 +296,11 @@ describe ('ScoreList', () => {
       scoreList.largeStraight = new BuildingsScoreStrategy(BuildingsStrategyType.LARGESTRAIGHT, ThrowResult([2, 3, 4, 5, 6, 4]));
     }).toThrow('Invalid score strategy: BuildingsScoreStrategy\nExpected: StraitsScoreStrategy');
   })
+
+  it ('should throw an error if full straight is set to a ScoreStrategy that is not StraitsScoreStrategy', () => {
+    const scoreList = new ScoreList();
+    expect(() => {
+      scoreList.fullStraight = new BuildingsScoreStrategy(BuildingsStrategyType.FULLSTRAIGHT, ThrowResult([1, 2, 3, 4, 5, 6]));
+    }).toThrow('Invalid score strategy: BuildingsScoreStrategy\nExpected: StraitsScoreStrategy');
+  })
 });
