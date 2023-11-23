@@ -74,6 +74,12 @@ export default class ScoreList {
     return this.#twos.score;
   }
 
+  set threes(scoreStrategy: ScoreStrategy) {
+    if (scoreStrategy.constructor.name != 'FaceValuesScoreStrategy') {
+      throw new Error(`Invalid score strategy: ${scoreStrategy.constructor.name}\nExpected: ${FaceValuesScoreStrategy.name}`);
+    }
+  }
+
   get threes() {
     return this.#threes.score;
   }
