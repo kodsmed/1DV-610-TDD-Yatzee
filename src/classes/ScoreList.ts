@@ -190,6 +190,10 @@ export default class ScoreList {
     return this.#villa.score;
   }
 
+  set tower(scoreStrategy: ScoreStrategy) {
+    this.validateBuildingsScoreStrategy(scoreStrategy);
+  }
+
   get tower() {
     return this.#tower.score;
   }
