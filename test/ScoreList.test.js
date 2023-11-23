@@ -247,4 +247,11 @@ describe ('ScoreList', () => {
       scoreList.aPair = new BuildingsScoreStrategy(BuildingsStrategyType.APAIR, ThrowResult([2, 2, 3, 4, 5, 6]));
     }).toThrow('Invalid score strategy: BuildingsScoreStrategy\nExpected: PairsScoreStrategy');
   })
+
+  it ('should throw an error if two pairs is set to a ScoreStrategy that is not PairsScoreStrategy', () => {
+    const scoreList = new ScoreList();
+    expect(() => {
+      scoreList.twoPairs = new BuildingsScoreStrategy(BuildingsStrategyType.TWOPAIRS, ThrowResult([2, 2, 3, 3, 4, 5]));
+    }).toThrow('Invalid score strategy: BuildingsScoreStrategy\nExpected: PairsScoreStrategy');
+  })
 });
