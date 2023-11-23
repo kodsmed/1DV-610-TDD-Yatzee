@@ -226,4 +226,11 @@ describe ('ScoreList', () => {
       scoreList.fours = new BuildingsScoreStrategy(BuildingsStrategyType.FOURS, ThrowResult([4, 4, 4, 4, 4, 4]));
     }).toThrow('Invalid score strategy: BuildingsScoreStrategy\nExpected: FacesValuesScoreStrategy');
   })
+
+  it ('should throw an error if fives is set to a ScoreStrategy that is not FaceValueStrategy', () => {
+    const scoreList = new ScoreList();
+    expect(() => {
+      scoreList.fives = new BuildingsScoreStrategy(BuildingsStrategyType.FIVES, ThrowResult([5, 5, 5, 5, 5, 5]));
+    }).toThrow('Invalid score strategy: BuildingsScoreStrategy\nExpected: FacesValuesScoreStrategy');
+  })
 });
