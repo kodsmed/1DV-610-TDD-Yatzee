@@ -182,6 +182,10 @@ export default class ScoreList {
     return this.#house.score;
   }
 
+  set villa(scoreStrategy: ScoreStrategy) {
+    this.validateBuildingsScoreStrategy(scoreStrategy);
+  }
+
   get villa() {
     return this.#villa.score;
   }
