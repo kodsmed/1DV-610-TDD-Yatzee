@@ -68,7 +68,10 @@ const StraightsScoreStrategy = jest.fn().mockImplementation((straightType, throw
 // Mock the YahtzeeScoreStrategy class so we can control the score.
 const YahtzeeScoreStrategy = jest.fn().mockImplementation((throwResult) => {
   return {
-    score: 1000000
+    score: 1000000,
+    constructor: {
+      name: 'YahtzeeScoreStrategy'
+    }
   }
 });
 
@@ -302,5 +305,12 @@ describe ('ScoreList', () => {
     expect(() => {
       scoreList.fullStraight = new BuildingsScoreStrategy(BuildingsStrategyType.FULLSTRAIGHT, ThrowResult([1, 2, 3, 4, 5, 6]));
     }).toThrow('Invalid score strategy: BuildingsScoreStrategy\nExpected: StraitsScoreStrategy');
+  })
+
+  it ('should throw an error if house is set to a ScoreStrategy that is not BuildingsScoreStrategy', () => {
+    const scoreList = new ScoreList();
+    expect(() => {
+      scoreList.house = new YahtzeeScoreStrategy(ThrowResult([1, 1, 1, 2, 2, 3]));
+    }).toThrow('Invalid score strategy: YahtzeeScoreStrategy\nExpected: BuildingsScoreStrategy');
   })
 });
