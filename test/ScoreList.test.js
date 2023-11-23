@@ -206,4 +206,10 @@ describe ('ScoreList', () => {
     }).toThrow('Invalid score strategy: BuildingsScoreStrategy\nExpected: FacesValuesScoreStrategy');
   });
 
+  it ('should throw an error if twos is set to a ScoreStrategy that is not FaceValueStrategy', () => {
+    const scoreList = new ScoreList();
+    expect(() => {
+      scoreList.twos = new BuildingsScoreStrategy(BuildingsStrategyType.TWOS, ThrowResult([2, 2, 2, 2, 2, 2]));
+    }).toThrow('Invalid score strategy: BuildingsScoreStrategy\nExpected: FacesValuesScoreStrategy');
+  })
 });
