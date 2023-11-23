@@ -166,6 +166,10 @@ export default class ScoreList {
     return this.#largeStraight.score;
   }
 
+  set fullStraight(scoreStrategy: ScoreStrategy) {
+    this.validateStraitsScoreStrategy(scoreStrategy);
+  }
+
   get fullStraight() {
     return this.#fullStraight.score;
   }
