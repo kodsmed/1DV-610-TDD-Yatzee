@@ -65,12 +65,12 @@ const StraightsScoreStrategy = jest.fn().mockImplementation((straightType, throw
   }
 });
 
-// Mock the YahtzeeScoreStrategy class so we can control the score.
-const YahtzeeScoreStrategy = jest.fn().mockImplementation((throwResult) => {
+// Mock the YatzeeScoreStrategy class so we can control the score.
+const YatzeeScoreStrategy = jest.fn().mockImplementation((throwResult) => {
   return {
     score: 1000000,
     constructor: {
-      name: 'YahtzeeScoreStrategy'
+      name: 'YatzeeScoreStrategy'
     }
   }
 });
@@ -310,28 +310,35 @@ describe ('ScoreList', () => {
   it ('should throw an error if house is set to a ScoreStrategy that is not BuildingsScoreStrategy', () => {
     const scoreList = new ScoreList();
     expect(() => {
-      scoreList.house = new YahtzeeScoreStrategy(ThrowResult([1, 1, 1, 2, 2, 3]));
-    }).toThrow('Invalid score strategy: YahtzeeScoreStrategy\nExpected: BuildingsScoreStrategy');
+      scoreList.house = new YatzeeScoreStrategy(ThrowResult([1, 1, 1, 2, 2, 3]));
+    }).toThrow('Invalid score strategy: YatzeeScoreStrategy\nExpected: BuildingsScoreStrategy');
   })
 
   it ('should throw an error if villa is set to a ScoreStrategy that is not BuildingsScoreStrategy', () => {
     const scoreList = new ScoreList();
     expect(() => {
-      scoreList.villa = new YahtzeeScoreStrategy(ThrowResult([1, 1, 1, 2, 2, 2]));
-    }).toThrow('Invalid score strategy: YahtzeeScoreStrategy\nExpected: BuildingsScoreStrategy');
+      scoreList.villa = new YatzeeScoreStrategy(ThrowResult([1, 1, 1, 2, 2, 2]));
+    }).toThrow('Invalid score strategy: YatzeeScoreStrategy\nExpected: BuildingsScoreStrategy');
   })
 
   it ('should throw an error if tower is set to a ScoreStrategy that is not BuildingsScoreStrategy', () => {
     const scoreList = new ScoreList();
     expect(() => {
-      scoreList.tower = new YahtzeeScoreStrategy(ThrowResult([1, 1, 1, 1, 2, 2]));
-    }).toThrow('Invalid score strategy: YahtzeeScoreStrategy\nExpected: BuildingsScoreStrategy');
+      scoreList.tower = new YatzeeScoreStrategy(ThrowResult([1, 1, 1, 1, 2, 2]));
+    }).toThrow('Invalid score strategy: YatzeeScoreStrategy\nExpected: BuildingsScoreStrategy');
   })
 
   it ('should throw an error if chance is set to a ScoreStrategy that is not ChanceScoreStrategy', () => {
     const scoreList = new ScoreList();
     expect(() => {
-      scoreList.chance = new YahtzeeScoreStrategy(ThrowResult([1, 1, 1, 2, 2, 3]));
-    }).toThrow('Invalid score strategy: YahtzeeScoreStrategy\nExpected: ChanceScoreStrategy');
+      scoreList.chance = new YatzeeScoreStrategy(ThrowResult([1, 1, 1, 2, 2, 3]));
+    }).toThrow('Invalid score strategy: YatzeeScoreStrategy\nExpected: ChanceScoreStrategy');
+  })
+
+  it ('should throw an error if yatzee is set to a ScoreStrategy that is not YatzeeScoreStrategy', () => {
+    const scoreList = new ScoreList();
+    expect(() => {
+      scoreList.yatzee = new BuildingsScoreStrategy(BuildingsStrategyType.YATZEE, ThrowResult([1, 1, 1, 1, 1, 1]));
+    }).toThrow('Invalid score strategy: BuildingsScoreStrategy\nExpected: YatzeeScoreStrategy');
   })
 });
