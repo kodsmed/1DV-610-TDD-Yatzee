@@ -142,6 +142,10 @@ export default class ScoreList {
     return this.#fourOfAKind.score;
   }
 
+  set fiveOfAKind(scoreStrategy: ScoreStrategy) {
+    this.validateNOfAKindScoreStrategy(scoreStrategy);
+  }
+
   get fiveOfAKind() {
     return this.#fiveOfAKind.score;
   }
