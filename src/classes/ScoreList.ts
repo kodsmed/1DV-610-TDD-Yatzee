@@ -158,6 +158,10 @@ export default class ScoreList {
     return this.#smallStraight.score;
   }
 
+  set largeStraight(scoreStrategy: ScoreStrategy) {
+    this.validateStraitsScoreStrategy(scoreStrategy);
+  }
+
   get largeStraight() {
     return this.#largeStraight.score;
   }
