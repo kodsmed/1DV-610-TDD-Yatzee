@@ -10,26 +10,26 @@ import YatzeeScoreStrategy from "./YatzeeScoreStrategy.js";
 import NullScoreStrategy from "./NullScoreStrategy.js";
 
 export default class ScoreList {
-  #ones: any;
-  #twos: any;
-  #threes: any;
-  #fours: any;
-  #fives: any;
-  #sixes: any;
-  #aPair: any;
-  #twoPairs: any;
-  #threePairs: any;
-  #threeOfAKind: any;
-  #fourOfAKind: any;
-  #fiveOfAKind: any;
-  #smallStrait: any;
-  #largeStrait: any;
-  #fullStrait: any;
-  #house: any;
-  #villa: any;
-  #tower: any;
-  #chance: any;
-  #yatzee: any;
+  #ones: ScoreStrategy;
+  #twos: ScoreStrategy ;
+  #threes: ScoreStrategy;
+  #fours: ScoreStrategy;
+  #fives: ScoreStrategy;
+  #sixes: ScoreStrategy;
+  #aPair: ScoreStrategy;
+  #twoPairs: ScoreStrategy;
+  #threePairs: ScoreStrategy;
+  #threeOfAKind: ScoreStrategy;
+  #fourOfAKind: ScoreStrategy ;
+  #fiveOfAKind: ScoreStrategy;
+  #smallStrait: ScoreStrategy;
+  #largeStrait: ScoreStrategy;
+  #fullStrait: ScoreStrategy;
+  #house: ScoreStrategy;
+  #villa: ScoreStrategy;
+  #tower: ScoreStrategy;
+  #chance: ScoreStrategy;
+  #yatzee: ScoreStrategy;
 
   constructor() {
     this.#ones = new NullScoreStrategy();
@@ -59,7 +59,7 @@ export default class ScoreList {
   }
 
   get ones() {
-    return this.#ones.score;
+    return this.#ones;
   }
 
   set twos(scoreStrategy: ScoreStrategy) {
@@ -67,7 +67,7 @@ export default class ScoreList {
   }
 
   get twos() {
-    return this.#twos.score;
+    return this.#twos;
   }
 
   set threes(scoreStrategy: ScoreStrategy) {
@@ -75,7 +75,7 @@ export default class ScoreList {
   }
 
   get threes() {
-    return this.#threes.score;
+    return this.#threes;
   }
 
   set fours(scoreStrategy: ScoreStrategy) {
@@ -83,7 +83,7 @@ export default class ScoreList {
   }
 
   get fours() {
-    return this.#fours.score;
+    return this.#fours;
   }
 
   set fives(scoreStrategy: ScoreStrategy) {
@@ -91,7 +91,7 @@ export default class ScoreList {
   }
 
   get fives() {
-    return this.#fives.score;
+    return this.#fives;
   }
 
   set sixes(scoreStrategy: ScoreStrategy) {
@@ -99,7 +99,7 @@ export default class ScoreList {
   }
 
   get sixes() {
-    return this.#sixes.score;
+    return this.#sixes;
   }
 
   set aPair(scoreStrategy: ScoreStrategy) {
@@ -107,7 +107,7 @@ export default class ScoreList {
   }
 
   get aPair() {
-    return this.#aPair.score;
+    return this.#aPair;
   }
 
   set twoPairs(scoreStrategy: ScoreStrategy) {
@@ -115,7 +115,7 @@ export default class ScoreList {
   }
 
   get twoPairs() {
-    return this.#twoPairs.score;
+    return this.#twoPairs;
   }
 
   set threePairs(scoreStrategy: ScoreStrategy) {
@@ -123,7 +123,7 @@ export default class ScoreList {
   }
 
   get threePairs() {
-    return this.#threePairs.score;
+    return this.#threePairs;
   }
 
   set threeOfAKind(scoreStrategy: ScoreStrategy) {
@@ -131,7 +131,7 @@ export default class ScoreList {
   }
 
   get threeOfAKind() {
-    return this.#threeOfAKind.score;
+    return this.#threeOfAKind;
   }
 
   set fourOfAKind(scoreStrategy: ScoreStrategy) {
@@ -139,7 +139,7 @@ export default class ScoreList {
   }
 
   get fourOfAKind() {
-    return this.#fourOfAKind.score;
+    return this.#fourOfAKind;
   }
 
   set fiveOfAKind(scoreStrategy: ScoreStrategy) {
@@ -147,7 +147,7 @@ export default class ScoreList {
   }
 
   get fiveOfAKind() {
-    return this.#fiveOfAKind.score;
+    return this.#fiveOfAKind;
   }
 
   set smallStrait(scoreStrategy: ScoreStrategy) {
@@ -155,7 +155,7 @@ export default class ScoreList {
   }
 
   get smallStrait() {
-    return this.#smallStrait.score;
+    return this.#smallStrait;
   }
 
   set largeStrait(scoreStrategy: ScoreStrategy) {
@@ -163,7 +163,7 @@ export default class ScoreList {
   }
 
   get largeStrait() {
-    return this.#largeStrait.score;
+    return this.#largeStrait;
   }
 
   set fullStrait(scoreStrategy: ScoreStrategy) {
@@ -171,7 +171,7 @@ export default class ScoreList {
   }
 
   get fullStrait() {
-    return this.#fullStrait.score;
+    return this.#fullStrait;
   }
 
   set house(scoreStrategy: ScoreStrategy) {
@@ -179,7 +179,7 @@ export default class ScoreList {
   }
 
   get house() {
-    return this.#house.score;
+    return this.#house;
   }
 
   set villa(scoreStrategy: ScoreStrategy) {
@@ -187,7 +187,7 @@ export default class ScoreList {
   }
 
   get villa() {
-    return this.#villa.score;
+    return this.#villa;
   }
 
   set tower(scoreStrategy: ScoreStrategy) {
@@ -195,7 +195,7 @@ export default class ScoreList {
   }
 
   get tower() {
-    return this.#tower.score;
+    return this.#tower;
   }
 
   set chance(scoreStrategy: ScoreStrategy) {
@@ -203,7 +203,7 @@ export default class ScoreList {
   }
 
   get chance() {
-    return this.#chance.score;
+    return this.#chance;
   }
 
   set yatzee(scoreStrategy: ScoreStrategy) {
@@ -211,7 +211,7 @@ export default class ScoreList {
   }
 
   get yatzee() {
-    return this.#yatzee.score;
+    return this.#yatzee;
   }
 
   private validateFaceValuesScoreStrategy(scoreStrategy: ScoreStrategy) {

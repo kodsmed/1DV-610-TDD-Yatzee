@@ -113,6 +113,52 @@ jest.mock('../serve/compiled-js/classes/YatzeeScoreStrategy.js', () => ({
   })
 }));
 
+const correctTypes = [
+  new FaceValuesScoreStrategy(new ThrowResult([1, 2, 3, 4, 5, 6])),
+  new FaceValuesScoreStrategy(new ThrowResult([1, 2, 3, 4, 5, 6])),
+  new FaceValuesScoreStrategy(new ThrowResult([1, 2, 3, 4, 5, 6])),
+  new FaceValuesScoreStrategy(new ThrowResult([1, 2, 3, 4, 5, 6])),
+  new FaceValuesScoreStrategy(new ThrowResult([1, 2, 3, 4, 5, 6])),
+  new FaceValuesScoreStrategy(new ThrowResult([1, 2, 3, 4, 5, 6])),
+  new PairsScoreStrategy(new ThrowResult([1, 2, 3, 4, 5, 6])),
+  new PairsScoreStrategy(new ThrowResult([1, 2, 3, 4, 5, 6])),
+  new PairsScoreStrategy(new ThrowResult([1, 2, 3, 4, 5, 6])),
+  new NOfAKindScoreStrategy('', new ThrowResult([1, 2, 3, 4, 5, 6])),
+  new NOfAKindScoreStrategy('', new ThrowResult([1, 2, 3, 4, 5, 6])),
+  new NOfAKindScoreStrategy('', new ThrowResult([1, 2, 3, 4, 5, 6])),
+  new StraitsScoreStrategy('', new ThrowResult([1, 2, 3, 4, 5, 6])),
+  new StraitsScoreStrategy('', new ThrowResult([1, 2, 3, 4, 5, 6])),
+  new StraitsScoreStrategy('', new ThrowResult([1, 2, 3, 4, 5, 6])),
+  new BuildingsScoreStrategy('', new ThrowResult([1, 2, 3, 4, 5, 6])),
+  new BuildingsScoreStrategy('', new ThrowResult([1, 2, 3, 4, 5, 6])),
+  new BuildingsScoreStrategy('', new ThrowResult([1, 2, 3, 4, 5, 6])),
+  new ChanceScoreStrategy(new ThrowResult([1, 2, 3, 4, 5, 6])),
+  new YatzeeScoreStrategy(new ThrowResult([1, 2, 3, 4, 5, 6]))
+];
+
+const properties = [
+  'ones',
+  'twos',
+  'threes',
+  'fours',
+  'fives',
+  'sixes',
+  'aPair',
+  'twoPairs',
+  'threePairs',
+  'threeOfAKind',
+  'fourOfAKind',
+  'fiveOfAKind',
+  'smallStrait',
+  'largeStrait',
+  'fullStrait',
+  'house',
+  'villa',
+  'tower',
+  'chance',
+  'yatzee'
+];
+
 describe('ScoreList', () => {
 
   describe('should have the desired properties', () => {
@@ -383,51 +429,6 @@ describe('ScoreList', () => {
   describe('counter - tests', () => {
     it('no setter should throw an error if given a correct type', () => {
       const scoreList = new ScoreList();
-      const properties = [
-        'ones',
-        'twos',
-        'threes',
-        'fours',
-        'fives',
-        'sixes',
-        'aPair',
-        'twoPairs',
-        'threePairs',
-        'threeOfAKind',
-        'fourOfAKind',
-        'fiveOfAKind',
-        'smallStrait',
-        'largeStrait',
-        'fullStrait',
-        'house',
-        'villa',
-        'tower',
-        'chance',
-        'yatzee'
-      ];
-
-      const correctTypes = [
-        new FaceValuesScoreStrategy(new ThrowResult([1, 2, 3, 4, 5, 6])),
-        new FaceValuesScoreStrategy(new ThrowResult([1, 2, 3, 4, 5, 6])),
-        new FaceValuesScoreStrategy(new ThrowResult([1, 2, 3, 4, 5, 6])),
-        new FaceValuesScoreStrategy(new ThrowResult([1, 2, 3, 4, 5, 6])),
-        new FaceValuesScoreStrategy(new ThrowResult([1, 2, 3, 4, 5, 6])),
-        new FaceValuesScoreStrategy(new ThrowResult([1, 2, 3, 4, 5, 6])),
-        new PairsScoreStrategy(new ThrowResult([1, 2, 3, 4, 5, 6])),
-        new PairsScoreStrategy(new ThrowResult([1, 2, 3, 4, 5, 6])),
-        new PairsScoreStrategy(new ThrowResult([1, 2, 3, 4, 5, 6])),
-        new NOfAKindScoreStrategy('', new ThrowResult([1, 2, 3, 4, 5, 6])),
-        new NOfAKindScoreStrategy('', new ThrowResult([1, 2, 3, 4, 5, 6])),
-        new NOfAKindScoreStrategy('', new ThrowResult([1, 2, 3, 4, 5, 6])),
-        new StraitsScoreStrategy('', new ThrowResult([1, 2, 3, 4, 5, 6])),
-        new StraitsScoreStrategy('', new ThrowResult([1, 2, 3, 4, 5, 6])),
-        new StraitsScoreStrategy('', new ThrowResult([1, 2, 3, 4, 5, 6])),
-        new BuildingsScoreStrategy('', new ThrowResult([1, 2, 3, 4, 5, 6])),
-        new BuildingsScoreStrategy('', new ThrowResult([1, 2, 3, 4, 5, 6])),
-        new BuildingsScoreStrategy('', new ThrowResult([1, 2, 3, 4, 5, 6])),
-        new ChanceScoreStrategy(new ThrowResult([1, 2, 3, 4, 5, 6])),
-        new YatzeeScoreStrategy(new ThrowResult([1, 2, 3, 4, 5, 6]))
-      ];
 
       let didThrow = false;
       for (let i = 0; i < properties.length; i++) {
