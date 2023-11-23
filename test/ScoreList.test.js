@@ -331,7 +331,7 @@ describe ('ScoreList', () => {
   it ('should throw an error if chance is set to a ScoreStrategy that is not ChanceScoreStrategy', () => {
     const scoreList = new ScoreList();
     expect(() => {
-      scoreList.house = new YahtzeeScoreStrategy(ThrowResult([1, 1, 1, 2, 2, 3]));
+      scoreList.chance = new YahtzeeScoreStrategy(ThrowResult([1, 1, 1, 2, 2, 3]));
     }).toThrow('Invalid score strategy: YahtzeeScoreStrategy\nExpected: ChanceScoreStrategy');
   })
 });
