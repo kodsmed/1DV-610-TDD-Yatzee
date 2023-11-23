@@ -320,4 +320,11 @@ describe ('ScoreList', () => {
       scoreList.villa = new YahtzeeScoreStrategy(ThrowResult([1, 1, 1, 2, 2, 2]));
     }).toThrow('Invalid score strategy: YahtzeeScoreStrategy\nExpected: BuildingsScoreStrategy');
   })
+
+  it ('should throw an error if tower is set to a ScoreStrategy that is not BuildingsScoreStrategy', () => {
+    const scoreList = new ScoreList();
+    expect(() => {
+      scoreList.tower = new YahtzeeScoreStrategy(ThrowResult([1, 1, 1, 1, 2, 2]));
+    }).toThrow('Invalid score strategy: YahtzeeScoreStrategy\nExpected: BuildingsScoreStrategy');
+  })
 });
