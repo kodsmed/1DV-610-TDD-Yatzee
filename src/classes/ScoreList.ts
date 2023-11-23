@@ -110,6 +110,10 @@ export default class ScoreList {
     return this.#aPair.score;
   }
 
+  set twoPairs(scoreStrategy: ScoreStrategy) {
+    this.validatePairsScoreStrategy(scoreStrategy);
+  }
+
   get twoPairs() {
     return this.#twoPairs.score;
   }
