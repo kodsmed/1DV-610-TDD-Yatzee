@@ -94,6 +94,10 @@ export default class ScoreList {
     return this.#fives.score;
   }
 
+  set sixes(scoreStrategy: ScoreStrategy) {
+    this.validateFaceValuesScoreStrategy(scoreStrategy);
+  }
+
   get sixes() {
     return this.#sixes.score;
   }
