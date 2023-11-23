@@ -198,6 +198,10 @@ export default class ScoreList {
     return this.#tower.score;
   }
 
+  set chance(scoreStrategy: ScoreStrategy) {
+    this.validateChanceScoreStrategy(scoreStrategy);
+  }
+
   get chance() {
     return this.#chance.score;
   }
@@ -233,6 +237,12 @@ export default class ScoreList {
   private validateBuildingsScoreStrategy(scoreStrategy: ScoreStrategy) {
     if (scoreStrategy instanceof BuildingsScoreStrategy === false) {
       throw new Error(`Invalid score strategy: ${scoreStrategy.constructor.name}\nExpected: ${BuildingsScoreStrategy.name}`);
+    }
+  }
+
+  private validateChanceScoreStrategy(scoreStrategy: ScoreStrategy) {
+    if (scoreStrategy instanceof ChanceScoreStrategy === false) {
+      throw new Error(`Invalid score strategy: ${scoreStrategy.constructor.name}\nExpected: ${ChanceScoreStrategy.name}`);
     }
   }
   // TODO: IMPLEMENT SETTERS
