@@ -261,4 +261,11 @@ describe ('ScoreList', () => {
       scoreList.threePairs = new BuildingsScoreStrategy(BuildingsStrategyType.TWOPAIRS, ThrowResult([2, 2, 3, 3, 4, 4]));
     }).toThrow('Invalid score strategy: BuildingsScoreStrategy\nExpected: PairsScoreStrategy');
   })
+
+  it ('should throw an error if three of a kind is set to a ScoreStrategy that is not NOfAKindScoreStrategy', () => {
+    const scoreList = new ScoreList();
+    expect(() => {
+      scoreList.threeOfAKind = new BuildingsScoreStrategy(BuildingsStrategyType.THREEOFAKIND, ThrowResult([2, 2, 3, 3, 2, 4]));
+    }).toThrow('Invalid score strategy: BuildingsScoreStrategy\nExpected: NOfAKindScoreStrategy');
+  })
 });
