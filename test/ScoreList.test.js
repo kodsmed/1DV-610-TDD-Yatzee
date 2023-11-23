@@ -268,4 +268,11 @@ describe ('ScoreList', () => {
       scoreList.threeOfAKind = new BuildingsScoreStrategy(BuildingsStrategyType.THREEOFAKIND, ThrowResult([2, 2, 3, 3, 2, 4]));
     }).toThrow('Invalid score strategy: BuildingsScoreStrategy\nExpected: NOfAKindScoreStrategy');
   })
+
+  it ('should throw an error if four of a kind is set to a ScoreStrategy that is not NOfAKindScoreStrategy', () => {
+    const scoreList = new ScoreList();
+    expect(() => {
+      scoreList.fourOfAKind = new BuildingsScoreStrategy(BuildingsStrategyType.FOUROFAKIND, ThrowResult([2, 2, 3, 2, 2, 4]));
+    }).toThrow('Invalid score strategy: BuildingsScoreStrategy\nExpected: NOfAKindScoreStrategy');
+  })
 });
