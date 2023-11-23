@@ -150,6 +150,10 @@ export default class ScoreList {
     return this.#fiveOfAKind.score;
   }
 
+  set smallStraight(scoreStrategy: ScoreStrategy) {
+    this.validateStraitsScoreStrategy(scoreStrategy);
+  }
+
   get smallStraight() {
     return this.#smallStraight.score;
   }
@@ -197,6 +201,12 @@ export default class ScoreList {
   private validateNOfAKindScoreStrategy(scoreStrategy: ScoreStrategy) {
     if (scoreStrategy instanceof NOfAKindScoreStrategy === false) {
       throw new Error(`Invalid score strategy: ${scoreStrategy.constructor.name}\nExpected: ${NOfAKindScoreStrategy.name}`);
+    }
+  }
+
+  private validateStraitsScoreStrategy(scoreStrategy: ScoreStrategy) {
+    if (scoreStrategy instanceof StraitsScoreStrategy === false) {
+      throw new Error(`Invalid score strategy: ${scoreStrategy.constructor.name}\nExpected: ${StraitsScoreStrategy.name}`);
     }
   }
   // TODO: IMPLEMENT SETTERS
