@@ -174,6 +174,10 @@ export default class ScoreList {
     return this.#fullStraight.score;
   }
 
+  set house(scoreStrategy: ScoreStrategy) {
+    this.validateBuildingsScoreStrategy(scoreStrategy);
+  }
+
   get house() {
     return this.#house.score;
   }
@@ -215,6 +219,12 @@ export default class ScoreList {
   private validateStraitsScoreStrategy(scoreStrategy: ScoreStrategy) {
     if (scoreStrategy instanceof StraitsScoreStrategy === false) {
       throw new Error(`Invalid score strategy: ${scoreStrategy.constructor.name}\nExpected: ${StraitsScoreStrategy.name}`);
+    }
+  }
+
+  private validateBuildingsScoreStrategy(scoreStrategy: ScoreStrategy) {
+    if (scoreStrategy instanceof BuildingsScoreStrategy === false) {
+      throw new Error(`Invalid score strategy: ${scoreStrategy.constructor.name}\nExpected: ${BuildingsScoreStrategy.name}`);
     }
   }
   // TODO: IMPLEMENT SETTERS
