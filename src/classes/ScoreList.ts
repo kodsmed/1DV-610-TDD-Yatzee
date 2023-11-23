@@ -22,9 +22,9 @@ export default class ScoreList {
   #threeOfAKind: any;
   #fourOfAKind: any;
   #fiveOfAKind: any;
-  #smallStraight: any;
-  #largeStraight: any;
-  #fullStraight: any;
+  #smallStrait: any;
+  #largeStrait: any;
+  #fullStrait: any;
   #house: any;
   #villa: any;
   #tower: any;
@@ -44,9 +44,9 @@ export default class ScoreList {
     this.#threeOfAKind = new NullScoreStrategy();
     this.#fourOfAKind = new NullScoreStrategy();
     this.#fiveOfAKind = new NullScoreStrategy();
-    this.#smallStraight = new NullScoreStrategy();
-    this.#largeStraight = new NullScoreStrategy();
-    this.#fullStraight = new NullScoreStrategy();
+    this.#smallStrait = new NullScoreStrategy();
+    this.#largeStrait = new NullScoreStrategy();
+    this.#fullStrait = new NullScoreStrategy();
     this.#house = new NullScoreStrategy();
     this.#villa = new NullScoreStrategy();
     this.#tower = new NullScoreStrategy();
@@ -150,28 +150,28 @@ export default class ScoreList {
     return this.#fiveOfAKind.score;
   }
 
-  set smallStraight(scoreStrategy: ScoreStrategy) {
+  set smallStrait(scoreStrategy: ScoreStrategy) {
     this.validateStraitsScoreStrategy(scoreStrategy);
   }
 
-  get smallStraight() {
-    return this.#smallStraight.score;
+  get smallStrait() {
+    return this.#smallStrait.score;
   }
 
-  set largeStraight(scoreStrategy: ScoreStrategy) {
+  set largeStrait(scoreStrategy: ScoreStrategy) {
     this.validateStraitsScoreStrategy(scoreStrategy);
   }
 
-  get largeStraight() {
-    return this.#largeStraight.score;
+  get largeStrait() {
+    return this.#largeStrait.score;
   }
 
-  set fullStraight(scoreStrategy: ScoreStrategy) {
+  set fullStrait(scoreStrategy: ScoreStrategy) {
     this.validateStraitsScoreStrategy(scoreStrategy);
   }
 
-  get fullStraight() {
-    return this.#fullStraight.score;
+  get fullStrait() {
+    return this.#fullStrait.score;
   }
 
   set house(scoreStrategy: ScoreStrategy) {
@@ -204,6 +204,10 @@ export default class ScoreList {
 
   get chance() {
     return this.#chance.score;
+  }
+
+  set yatzee(scoreStrategy: ScoreStrategy) {
+    this.validateYatzeeScoreStrategy(scoreStrategy);
   }
 
   get yatzee() {
@@ -243,6 +247,12 @@ export default class ScoreList {
   private validateChanceScoreStrategy(scoreStrategy: ScoreStrategy) {
     if (scoreStrategy instanceof ChanceScoreStrategy === false) {
       throw new Error(`Invalid score strategy: ${scoreStrategy.constructor.name}\nExpected: ${ChanceScoreStrategy.name}`);
+    }
+  }
+
+  private validateYatzeeScoreStrategy(scoreStrategy: ScoreStrategy) {
+    if (scoreStrategy instanceof YatzeeScoreStrategy === false) {
+      throw new Error(`Invalid score strategy: ${scoreStrategy.constructor.name}\nExpected: ${YatzeeScoreStrategy.name}`);
     }
   }
   // TODO: IMPLEMENT SETTERS
