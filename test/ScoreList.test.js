@@ -334,7 +334,7 @@ describe('ScoreList', () => {
   it('should throw an error if fours is set to a ScoreStrategy that is not FaceValueStrategy', () => {
     const scoreList = new ScoreList();
     expect(() => {
-      scoreList.fours = new BuildingsScoreStrategy('',  new ThrowResult([4, 4, 4, 4, 4, 4]));
+      scoreList.fours = new BuildingsScoreStrategy('', new ThrowResult([4, 4, 4, 4, 4, 4]));
     }).toThrow('Invalid score strategy: BuildingsScoreStrategy\nExpected: FacesValuesScoreStrategy');
   })
 
@@ -484,26 +484,34 @@ describe('ScoreList', () => {
 
       expect(unexpectedPropertyEncountered).toBe(false);
     });
-  });
 
-  it('should only set the ScoreStrategy if the score is null', () => {
-    const scoreList = new ScoreList();
+    it('should only set the ScoreStrategy if the score is null', () => {
+      const scoreList = new ScoreList();
 
-    for (let i = 0; i < properties.length; i++) {
-      scoreList[properties[i]] = correctTypes[i];
-    }
-
-    for (let i = 0; i < properties.length; i++) {
-      scoreList[properties[i]] = alternativeCorrectTypes[i];
-    }
-
-    let unexpectedPropertyEncountered = false;
-    for (let i = 0; i < properties.length; i++) {
-      if (scoreList[properties[i]] !== correctTypes[i]) {
-        unexpectedPropertyEncountered = true;
+      for (let i = 0; i < properties.length; i++) {
+        scoreList[properties[i]] = correctTypes[i];
       }
-    }
 
-    expect(unexpectedPropertyEncountered).toBe(false);
+      for (let i = 0; i < properties.length; i++) {
+        scoreList[properties[i]] = alternativeCorrectTypes[i];
+      }
+
+      let unexpectedPropertyEncountered = false;
+      for (let i = 0; i < properties.length; i++) {
+        if (scoreList[properties[i]] !== correctTypes[i]) {
+          unexpectedPropertyEncountered = true;
+        }
+      }
+
+      expect(unexpectedPropertyEncountered).toBe(false);
+    });
   });
+
+  describe('should return the correct score', () => {
+    it('should return 0 if no score has been set', () => {
+      const scoreList = new ScoreList();
+      expect(scoreList.score).toBe(0);
+    });
+  });
+
 });
