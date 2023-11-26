@@ -63,5 +63,18 @@ describe('GameTable', () => {
     const gameTable = new GameTable(['111', '222', '333', '444']);
     expect(gameTable.advanceToNextPlayer).toBeInstanceOf(Function);
   });
+
+  it ('advanceToNextPlayer should advance the currentPlayer to the next player', () => {
+    const gameTable = new GameTable(['111', '222', '333', '444']);
+    expect(gameTable.currentPlayer.name).toBe('111');
+    gameTable.advanceToNextPlayer();
+    expect(gameTable.currentPlayer.name).toBe('222');
+    gameTable.advanceToNextPlayer();
+    expect(gameTable.currentPlayer.name).toBe('333');
+    gameTable.advanceToNextPlayer();
+    expect(gameTable.currentPlayer.name).toBe('444');
+    gameTable.advanceToNextPlayer();
+    expect(gameTable.currentPlayer.name).toBe('111');
+  });
 });
 
