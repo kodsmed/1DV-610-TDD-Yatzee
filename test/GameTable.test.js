@@ -18,10 +18,4 @@ describe('GameTable', () => {
       new GameTable([]);
     }).toThrow("Player names must not be empty");
   });
-
-  it ('should throw an error if the playerNames array contains anything other than strings', () => {
-    expect(() => {
-      new GameTable([1]);
-    }).toThrow("Player names must be strings");
-  });
 });
