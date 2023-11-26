@@ -58,5 +58,10 @@ describe('GameTable', () => {
     const gameTable = new GameTable(['111', '222', '333', '444']);
     expect(gameTable.currentPlayer).toBeInstanceOf(Player);
   });
+
+  it ('should have a method called advanceToNextPlayer', () => {
+    const gameTable = new GameTable(['111', '222', '333', '444']);
+    expect(gameTable.advancePlayer).toBeInstanceOf(Function);
+  });
 });
 
