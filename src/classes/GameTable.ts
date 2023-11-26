@@ -61,4 +61,9 @@ export default class GameTable {
       throw new Error("Player names must be unique");
     }
   }
+
+  get isGameOver(): boolean {
+    let isGameOver = false;
+    return isGameOver;
+  }
 }
