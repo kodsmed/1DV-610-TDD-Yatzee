@@ -18,5 +18,9 @@ export default class GameTable {
         throw new Error("Player names must be strings");
       }
     }
+
+    if (playerNamesArray.length > 4) {
+      throw new Error("There can be no more than 4 players");
+    }
   }
 }
