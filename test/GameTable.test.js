@@ -3,13 +3,13 @@ import GameTable from '../serve/compiled-js/classes/GameTable.js';
 
 describe('GameTable', () => {
   it ('should create a new gameTable', () => {
-    const gameTable = new GameTable(['']);
+    const gameTable = new GameTable(['000']);
     expect(gameTable).toBeInstanceOf(GameTable);
   });
 
   it ('should throw an error if the playerNames is not an array', () => {
     expect(() => {
-      new GameTable('');
+      new GameTable('000');
     }).toThrow("Player names must be an array");
   });
 
@@ -45,6 +45,7 @@ describe('GameTable', () => {
     expect(gameTable.players[1].name).toBe('222');
     expect(gameTable.players[2].name).toBe('333');
     expect(gameTable.players[3].name).toBe('444');
+    expect(gameTable.players.length).toBe(4);
   });
 });
 

@@ -1,6 +1,14 @@
+import Player from "./Player.js";
+
 export default class GameTable {
+  players: Array<Player> = new Array<Player>();
+
   constructor(playerNames: Array<string>) {
     this.validatePlayerNames(playerNames);
+    playerNames.forEach((playerName) => {
+      console.log(`Creating player ${playerName}`);
+      this.players.push(new Player(playerName));
+    });
   }
 
   private validatePlayerNames(playerNames: unknown) {
