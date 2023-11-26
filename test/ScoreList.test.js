@@ -442,4 +442,23 @@ describe('ScoreList', () => {
       expect(didThrow).toBe(false);
     });
   });
+
+  describe('All Setters', () => {
+    it('should set the ScoreStrategy correctly', () => {
+      const scoreList = new ScoreList();
+
+      for (let i = 0; i < properties.length; i++) {
+        scoreList[properties[i]] = correctTypes[i];
+      }
+
+      let unexpectedPropertyEncountered = false;
+      for (let i = 0; i < properties.length; i++) {
+        if (scoreList[properties[i]] !== correctTypes[i]) {
+          unexpectedPropertyEncountered = true;
+        }
+      }
+
+      expect(unexpectedPropertyEncountered).toBe(false);
+    });
+  });
 });
