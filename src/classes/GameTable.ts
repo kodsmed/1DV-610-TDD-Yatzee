@@ -6,7 +6,6 @@ export default class GameTable {
   constructor(playerNames: Array<string>) {
     this.validatePlayerNames(playerNames);
     playerNames.forEach((playerName) => {
-      console.log(`Creating player ${playerName}`);
       this.players.push(new Player(playerName));
     });
   }
