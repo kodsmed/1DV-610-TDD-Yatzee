@@ -2,6 +2,7 @@ import { jest } from '@jest/globals';
 import Player from '../serve/compiled-js/classes/Player.js';
 import Die, { DieState } from '../serve/compiled-js/classes/DieClass.js';
 import GameTable from '../serve/compiled-js/classes/GameTable.js';
+import ThrowResult from '../serve/compiled-js/classes/ThrowResult.js';
 
 describe('GameTable', () => {
   it('should create a new gameTable', () => {
@@ -137,14 +138,13 @@ describe('GameTable', () => {
       });
     gameTable.dice = [Die1, Die2, Die3, Die4, Die5, Die6];
     const throwResult = gameTable.throwUnheldDice();
-    expect(throwResult).toBeInstanceOf(Array);
-    expect(throwResult.length).toBe(6);
-    expect(throwResult[0]).toBe(1);
-    expect(throwResult[1]).toBe(2);
-    expect(throwResult[2]).toBe(3);
-    expect(throwResult[3]).toBe(6);
-    expect(throwResult[4]).toBe(6);
-    expect(throwResult[5]).toBe(6);
+    expect(throwResult).toBeInstanceOf(ThrowResult);
+    expect(throwResult.rollResult[0]).toBe(1);
+    expect(throwResult.rollResult[1]).toBe(2);
+    expect(throwResult.rollResult[2]).toBe(3);
+    expect(throwResult.rollResult[3]).toBe(6);
+    expect(throwResult.rollResult[4]).toBe(6);
+    expect(throwResult.rollResult[5]).toBe(6);
   });
 });
 

@@ -1,5 +1,6 @@
 import Player from "./Player.js";
 import Die from "./DieClass.js";
+import ThrowResult from "./ThrowResult.js";
 
 export default class GameTable {
   players: Array<Player> = new Array<Player>();
@@ -68,6 +69,11 @@ export default class GameTable {
     return numberOfPlayersWithAllScoresSet === this.players.length;
   }
 
-  throwUnheldDice() {
+  throwUnheldDice(): ThrowResult {
+    const randomCallback = () => {return (Math.floor(Math.random() * 6) + 1)};
+    for (const die of this.dice) {
+      die.roll(randomCallback);
+    }
+    return new ThrowResult(this.dice);
   }
 }
