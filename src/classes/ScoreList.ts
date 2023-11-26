@@ -84,7 +84,28 @@ export default class ScoreList {
   }
 
   get allScoresSet() {
-    return false
+    return (
+        this.#ones instanceof FaceValuesScoreStrategy &&
+        this.#twos instanceof FaceValuesScoreStrategy &&
+        this.#threes instanceof FaceValuesScoreStrategy &&
+        this.#fours instanceof FaceValuesScoreStrategy &&
+        this.#fives instanceof FaceValuesScoreStrategy &&
+        this.#sixes instanceof FaceValuesScoreStrategy &&
+        this.#aPair instanceof PairsScoreStrategy &&
+        this.#twoPairs instanceof PairsScoreStrategy &&
+        this.#threePairs instanceof PairsScoreStrategy &&
+        this.#threeOfAKind instanceof NOfAKindScoreStrategy &&
+        this.#fourOfAKind instanceof NOfAKindScoreStrategy &&
+        this.#fiveOfAKind instanceof NOfAKindScoreStrategy &&
+        this.#smallStrait instanceof StraitsScoreStrategy &&
+        this.#largeStrait instanceof StraitsScoreStrategy &&
+        this.#fullStrait instanceof StraitsScoreStrategy &&
+        this.#house instanceof BuildingsScoreStrategy &&
+        this.#villa instanceof BuildingsScoreStrategy &&
+        this.#tower instanceof BuildingsScoreStrategy &&
+        this.#chance instanceof ChanceScoreStrategy &&
+        this.#yatzee instanceof YatzeeScoreStrategy
+    );
   }
 
   set ones(scoreStrategy: ScoreStrategy) {
