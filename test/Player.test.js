@@ -25,4 +25,10 @@ describe('Player', () => {
       new Player('');
     }).toThrow("Player name must not be empty");
   });
+
+  it ('should throw an error if the name is too short (less than 3 characters)', () => {
+    expect(() => {
+      new Player('ab');
+    }).toThrow("Player name must be at least 3 characters long");
+  });
 });
