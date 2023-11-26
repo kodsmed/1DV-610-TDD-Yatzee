@@ -22,5 +22,9 @@ export default class Player {
     if (typeof nickname !== "string") {
       throw new Error("Player name must be a string");
     }
+
+    if (nickname.length < 1) {
+      throw new Error("Player name must not be empty");
+    }
   }
 }
