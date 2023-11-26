@@ -19,4 +19,10 @@ describe('Player', () => {
       new Player(1);
     }).toThrow("Player name must be a string");
   });
+
+  it ('should throw an error if the name is an empty string', () => {
+    expect(() => {
+      new Player('');
+    }).toThrow("Player name must not be empty");
+  });
 });
