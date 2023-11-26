@@ -1,128 +1,83 @@
 import { jest } from '@jest/globals';
-import ScoreList from '../serve/compiled-js/classes/ScoreList.js';
+import ThrowResult from '../serve/compiled-js/classes/ThrowResult.js';
+import FaceValuesScoreStrategy from '../serve/compiled-js/classes/FaceValuesScoreStrategy.js';
 import BuildingsScoreStrategy from '../serve/compiled-js/classes/BuildingsScoreStrategy.js';
 import ChanceScoreStrategy from '../serve/compiled-js/classes/ChanceScoreStrategy.js';
-import FaceValuesScoreStrategy from '../serve/compiled-js/classes/FaceValuesScoreStrategy.js'
-import NOfAKindScoreStrategy from '../serve/compiled-js/classes/NOfAKindScoreStrategy.js'
-import PairsScoreStrategy from '../serve/compiled-js/classes/PairsScoreStrategy.js'
-import StraitsScoreStrategy from '../serve/compiled-js/classes/StraitsScoreStrategy.js'
-import YatzeeScoreStrategy from '../serve/compiled-js/classes/YatzeeScoreStrategy.js'
-import ThrowResult from '../serve/compiled-js/classes/ThrowResult.js';
+import NOfAKindScoreStrategy from '../serve/compiled-js/classes/NOfAKindScoreStrategy.js';
+import StraitsScoreStrategy from '../serve/compiled-js/classes/StraitsScoreStrategy.js';
+import PairsScoreStrategy from '../serve/compiled-js/classes/PairsScoreStrategy.js';
+import YatzeeScoreStrategy from '../serve/compiled-js/classes/YatzeeScoreStrategy.js';
+import ScoreList from '../serve/compiled-js/classes/ScoreList.js';
 
-// Mock the ThrowResult class so we can control the rollResult
+//Mock ThrowResult
 jest.mock('../serve/compiled-js/classes/ThrowResult.js', () => ({
-  __esModule: true,
-  default: jest.fn().mockImplementation((rollResult) => {
+  ThrowResult: jest.fn().mockImplementation((rollResult) => {
+    console.log('Mock ThrowResult constructor called');
     return {
-      rollResult: rollResult,
+      rollResult: rollResult
     }
   })
 }));
 
+// Mock FaceValuesScoreStrategy
+const mockFaceValuesScoreStrategy = jest
+  .spyOn(FaceValuesScoreStrategy.prototype, 'score', 'get')
+  .mockImplementation(() => {
+    return 1;
+  });
 
-// Mock the BuildingsScoreStrategy enum so we can control the score.
-jest.mock('../serve/compiled-js/classes/BuildingsScoreStrategy.js', () => ({
-  __esModule: true,
-  default: jest.fn().mockImplementation(
-    (throwResult) => {
-      return {
-        score: 10000,
-        constructor: {
-          name: 'BuildingsScoreStrategy'
-        }
-      }
-    })
-}));
+// Mock PairsScoreStrategy
+const mockPairsScoreStrategy = jest
+  .spyOn(PairsScoreStrategy.prototype, 'score', 'get')
+  .mockImplementation(() => {
+    return 10;
+  });
 
+// Mock NOfAKindScoreStrategy
+const mockNOfAKindScoreStrategy = jest
+  .spyOn(NOfAKindScoreStrategy.prototype, 'score', 'get')
+  .mockImplementation(() => {
+    return 100;
+  });
 
-// Mock the ChanceScoreStrategy class so we can control the score.
-jest.mock('../serve/compiled-js/classes/ChanceScoreStrategy.js', () => ({
-  __esModule: true,
-  default: jest.fn().mockImplementation((throwResult) => {
-    return {
-      score: 100000,
-      constructor: {
-        name: 'ChanceScoreStrategy'
-      }
-    }
-  })
-}));
+// Mock StraitsScoreStrategy
+const mockStraitsScoreStrategy = jest
+  .spyOn(StraitsScoreStrategy.prototype, 'score', 'get')
+  .mockImplementation(() => {
+    return 1000;
+  });
 
-// Mock the FaceValueScoreStrategy class so we can control the score.
-jest.mock('../serve/compiled-js/classes/FaceValuesScoreStrategy.js', () => ({
-  __esModule: true,
-  default: jest.fn().mockImplementation((faceValue, throwResult) => {
-    return {
-      score: 1,
-      constructor: {
-        name: 'FaceValuesScoreStrategy'
-      }
-    }
-  })
-}));
+// Mock BuildingsScoreStrategy
+const mockBuildingsScoreStrategy = jest
+  .spyOn(BuildingsScoreStrategy.prototype, 'score', 'get')
+  .mockImplementation(() => {
+    return 10000;
+  });
 
-// Mock NOfAKindScoreStrategy class so we can control the score.
-jest.mock('../serve/compiled-js/classes/NOfAKindScoreStrategy.js', () => ({
-  __esModule: true,
-  default: jest.fn().mockImplementation((numberOfAKind, throwResult) => {
-    return {
-      score: 100,
-      constructor: {
-        name: 'NOfAKindScoreStrategy'
-      }
-    }
-  })
-}));
+// Mock ChanceScoreStrategy
+const mockChanceScoreStrategy = jest
+  .spyOn(ChanceScoreStrategy.prototype, 'score', 'get')
+  .mockImplementation(() => {
+    return 100000;
+  });
 
-// Mock the PairsScoreStrategy class so we can control the score.
-jest.mock('../serve/compiled-js/classes/PairsScoreStrategy.js', () => ({
-  __esModule: true,
-  default: jest.fn().mockImplementation((throwResult) => {
-    return {
-      score: 10,
-      constructor: {
-        name: 'PairsScoreStrategy'
-      }
-    }
-  })
-}));
-
-// Mock the StraitsScoreStrategy class so we can control the score.
-jest.mock('../serve/compiled-js/classes/StraitsScoreStrategy.js', () => ({
-  __esModule: true,
-  default: jest.fn().mockImplementation((throwResult) => {
-    return {
-      score: 1000,
-      constructor: {
-        name: 'StraitsScoreStrategy'
-      }
-    }
-  })
-}));
-
-// Mock the YatzeeScoreStrategy class so we can control the score.
-jest.mock('../serve/compiled-js/classes/YatzeeScoreStrategy.js', () => ({
-  __esModule: true,
-  default: jest.fn().mockImplementation((throwResult) => {
-    return {
-      score: 1000000,
-      constructor: {
-        name: 'YatzeeScoreStrategy'
-      }
-    }
-  })
-}));
+// Mock YatzeeScoreStrategy
+const mockYatzeeScoreStrategy = jest
+  .spyOn(YatzeeScoreStrategy.prototype, 'score', 'get')
+  .mockImplementation(() => {
+    return 1000000;
+  });
 
 const correctTypes = [
-  new FaceValuesScoreStrategy(new ThrowResult([1, 2, 3, 4, 5, 6])),
-  new FaceValuesScoreStrategy(new ThrowResult([1, 2, 3, 4, 5, 6])),
-  new FaceValuesScoreStrategy(new ThrowResult([1, 2, 3, 4, 5, 6])),
-  new FaceValuesScoreStrategy(new ThrowResult([1, 2, 3, 4, 5, 6])),
-  new FaceValuesScoreStrategy(new ThrowResult([1, 2, 3, 4, 5, 6])),
-  new FaceValuesScoreStrategy(new ThrowResult([1, 2, 3, 4, 5, 6])),
-  new PairsScoreStrategy(new ThrowResult([1, 2, 3, 4, 5, 6])),
-  new PairsScoreStrategy(new ThrowResult([1, 2, 3, 4, 5, 6])),
-  new PairsScoreStrategy(new ThrowResult([1, 2, 3, 4, 5, 6])),
+  new FaceValuesScoreStrategy(1, new ThrowResult([1, 2, 3, 4, 5, 6])),
+  new FaceValuesScoreStrategy(2, new ThrowResult([1, 2, 3, 4, 5, 6])),
+  new FaceValuesScoreStrategy(3, new ThrowResult([1, 2, 3, 4, 5, 6])),
+  new FaceValuesScoreStrategy(4, new ThrowResult([1, 2, 3, 4, 5, 6])),
+  new FaceValuesScoreStrategy(5, new ThrowResult([1, 2, 3, 4, 5, 6])),
+  new FaceValuesScoreStrategy(6, new ThrowResult([1, 2, 3, 4, 5, 6])),
+  new PairsScoreStrategy(1, new ThrowResult([1, 2, 3, 4, 5, 6])),
+  new PairsScoreStrategy(2, new ThrowResult([1, 2, 3, 4, 5, 6])),
+  new PairsScoreStrategy(3, new ThrowResult([1, 2, 3, 4, 5, 6])),
   new NOfAKindScoreStrategy('', new ThrowResult([1, 2, 3, 4, 5, 6])),
   new NOfAKindScoreStrategy('', new ThrowResult([1, 2, 3, 4, 5, 6])),
   new NOfAKindScoreStrategy('', new ThrowResult([1, 2, 3, 4, 5, 6])),
@@ -137,15 +92,15 @@ const correctTypes = [
 ];
 
 const alternativeCorrectTypes = [
-  new FaceValuesScoreStrategy(new ThrowResult([2, 2, 2, 2, 2, 2])),
-  new FaceValuesScoreStrategy(new ThrowResult([2, 2, 2, 2, 2, 2])),
-  new FaceValuesScoreStrategy(new ThrowResult([2, 2, 2, 2, 2, 2])),
-  new FaceValuesScoreStrategy(new ThrowResult([2, 2, 2, 2, 2, 2])),
-  new FaceValuesScoreStrategy(new ThrowResult([2, 2, 2, 2, 2, 2])),
-  new FaceValuesScoreStrategy(new ThrowResult([2, 2, 2, 2, 2, 2])),
-  new PairsScoreStrategy(new ThrowResult([2, 2, 2, 2, 2, 2])),
-  new PairsScoreStrategy(new ThrowResult([2, 2, 2, 2, 2, 2])),
-  new PairsScoreStrategy(new ThrowResult([2, 2, 2, 2, 2, 2])),
+  new FaceValuesScoreStrategy(1, new ThrowResult([2, 2, 2, 2, 2, 2])),
+  new FaceValuesScoreStrategy(2, new ThrowResult([2, 2, 2, 2, 2, 2])),
+  new FaceValuesScoreStrategy(3, new ThrowResult([2, 2, 2, 2, 2, 2])),
+  new FaceValuesScoreStrategy(4, new ThrowResult([2, 2, 2, 2, 2, 2])),
+  new FaceValuesScoreStrategy(5, new ThrowResult([2, 2, 2, 2, 2, 2])),
+  new FaceValuesScoreStrategy(6, new ThrowResult([2, 2, 2, 2, 2, 2])),
+  new PairsScoreStrategy(1, new ThrowResult([2, 2, 2, 2, 2, 2])),
+  new PairsScoreStrategy(2, new ThrowResult([2, 2, 2, 2, 2, 2])),
+  new PairsScoreStrategy(3, new ThrowResult([2, 2, 2, 2, 2, 2])),
   new NOfAKindScoreStrategy('', new ThrowResult([2, 2, 2, 2, 2, 2])),
   new NOfAKindScoreStrategy('', new ThrowResult([2, 2, 2, 2, 2, 2])),
   new NOfAKindScoreStrategy('', new ThrowResult([2, 2, 2, 2, 2, 2])),
@@ -182,6 +137,7 @@ const properties = [
   'chance',
   'yatzee'
 ];
+
 
 describe('ScoreList', () => {
 
@@ -314,42 +270,42 @@ describe('ScoreList', () => {
     const scoreList = new ScoreList();
     expect(() => {
       scoreList.ones = new BuildingsScoreStrategy('', new ThrowResult([1, 1, 1, 1, 1, 1]));
-    }).toThrow('Invalid score strategy: BuildingsScoreStrategy\nExpected: FacesValuesScoreStrategy');
+    }).toThrow('Invalid score strategy: BuildingsScoreStrategy\nExpected: FaceValuesScoreStrategy');
   });
 
   it('should throw an error if twos is set to a ScoreStrategy that is not FaceValueStrategy', () => {
     const scoreList = new ScoreList();
     expect(() => {
       scoreList.twos = new BuildingsScoreStrategy('', new ThrowResult([2, 2, 2, 2, 2, 2]));
-    }).toThrow('Invalid score strategy: BuildingsScoreStrategy\nExpected: FacesValuesScoreStrategy');
+    }).toThrow('Invalid score strategy: BuildingsScoreStrategy\nExpected: FaceValuesScoreStrategy');
   })
 
   it('should throw an error if threes is set to a ScoreStrategy that is not FaceValueStrategy', () => {
     const scoreList = new ScoreList();
     expect(() => {
       scoreList.threes = new BuildingsScoreStrategy('', new ThrowResult([3, 3, 3, 3, 3, 3]));
-    }).toThrow('Invalid score strategy: BuildingsScoreStrategy\nExpected: FacesValuesScoreStrategy');
+    }).toThrow('Invalid score strategy: BuildingsScoreStrategy\nExpected: FaceValuesScoreStrategy');
   })
 
   it('should throw an error if fours is set to a ScoreStrategy that is not FaceValueStrategy', () => {
     const scoreList = new ScoreList();
     expect(() => {
       scoreList.fours = new BuildingsScoreStrategy('', new ThrowResult([4, 4, 4, 4, 4, 4]));
-    }).toThrow('Invalid score strategy: BuildingsScoreStrategy\nExpected: FacesValuesScoreStrategy');
+    }).toThrow('Invalid score strategy: BuildingsScoreStrategy\nExpected: FaceValuesScoreStrategy');
   })
 
   it('should throw an error if fives is set to a ScoreStrategy that is not FaceValueStrategy', () => {
     const scoreList = new ScoreList();
     expect(() => {
       scoreList.fives = new BuildingsScoreStrategy('', new ThrowResult([5, 5, 5, 5, 5, 5]));
-    }).toThrow('Invalid score strategy: BuildingsScoreStrategy\nExpected: FacesValuesScoreStrategy');
+    }).toThrow('Invalid score strategy: BuildingsScoreStrategy\nExpected: FaceValuesScoreStrategy');
   })
 
   it('should throw an error if sixes is set to a ScoreStrategy that is not FaceValueStrategy', () => {
     const scoreList = new ScoreList();
     expect(() => {
       scoreList.sixes = new BuildingsScoreStrategy('', new ThrowResult([6, 6, 6, 6, 6, 6]));
-    }).toThrow('Invalid score strategy: BuildingsScoreStrategy\nExpected: FacesValuesScoreStrategy');
+    }).toThrow('Invalid score strategy: BuildingsScoreStrategy\nExpected: FaceValuesScoreStrategy');
   })
 
   it('should throw an error if a pair is set to a ScoreStrategy that is not PairsScoreStrategy', () => {
@@ -514,12 +470,12 @@ describe('ScoreList', () => {
     });
   });
 
-  it('should return 60 if all FaceValuesScoreStrategy are set to 10', () => {
+  it('should return 6 if all FaceValuesScoreStrategy are set to 1', () => {
     const scoreList = new ScoreList();
     for (let i = 0; i < 6; i++) {
-      scoreList[properties[i]] = new FaceValuesScoreStrategy(new ThrowResult([1, 2, 3, 4, 5, 6]));
+      scoreList[properties[i]] = new FaceValuesScoreStrategy(i + 1, new ThrowResult([1, 2, 3, 4, 5, 6]));
     }
 
-    expect(scoreList.score).toBe(60);
+    expect(scoreList.score).toBe(6);
   });
 });

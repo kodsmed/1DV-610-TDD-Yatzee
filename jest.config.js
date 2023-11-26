@@ -1,9 +1,10 @@
 export default {
-  testEnvironment: 'jsdom',
+  testEnvironment: 'node',
   moduleFileExtensions: ['js', 'mjs'],
   testMatch: ['**/test/**/*.test.js'],
-  verbose: true,
+  //verbose: true,
   collectCoverage: true,
-  transform: {},
+  verbose: false,
   resolver: null,
+  transform: {},
 };
