@@ -5,6 +5,7 @@ export default class Player {
   #scoreList: ScoreList;
 
   constructor(nickname: String){
+    this.validateNickname(nickname);
     this.#nickname = nickname;
     this.#scoreList = new ScoreList();
   }
@@ -15,5 +16,11 @@ export default class Player {
 
   get scoreList() : ScoreList {
     return this.#scoreList;
+  }
+
+  private validateNickname(nickname: unknown) {
+    if (typeof nickname !== "string") {
+      throw new Error("Player name must be a string");
+    }
   }
 }
