@@ -62,6 +62,9 @@ export default class ScoreList {
     accumulatedScore += this.#fours.score;
     accumulatedScore += this.#fives.score;
     accumulatedScore += this.#sixes.score;
+    if (accumulatedScore >= 75) {
+      accumulatedScore += 50;
+    }
     accumulatedScore += this.#aPair.score;
     accumulatedScore += this.#twoPairs.score;
     accumulatedScore += this.#threePairs.score;
