@@ -147,4 +147,3 @@ describe('GameTable', () => {
     expect(throwResult.rollResult[5]).toBe(6);
   });
 });
-
