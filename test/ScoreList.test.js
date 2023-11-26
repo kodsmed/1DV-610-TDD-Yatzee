@@ -557,5 +557,15 @@ describe('ScoreList', () => {
 
       expect(scoreList.allScoresSet).toBe(false);
     });
+
+    it ('should return true if all scores are set', () => {
+      const scoreList = new ScoreList();
+
+      for (let i = 0; i < properties.length; i++) {
+        scoreList[properties[i]] = correctTypes[i];
+      }
+
+      expect(scoreList.allScoresSet).toBe(true);
+    });
   });
 });
