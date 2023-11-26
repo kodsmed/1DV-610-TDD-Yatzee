@@ -26,5 +26,9 @@ export default class Player {
     if (nickname.length < 1) {
       throw new Error("Player name must not be empty");
     }
+
+    if (nickname.length < 3) {
+      throw new Error("Player name must be at least 3 characters long");
+    }
   }
 }
