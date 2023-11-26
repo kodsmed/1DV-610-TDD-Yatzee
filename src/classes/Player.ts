@@ -1,3 +1,12 @@
 export default class Player {
-  constructor(){}
+
+  #nickname: String;
+
+  constructor(nickname: String){
+    this.#nickname = nickname;
+  }
+
+  get name() : String {
+    return this.#nickname;
+  }
 }
