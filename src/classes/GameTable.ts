@@ -13,14 +13,22 @@ export default class GameTable {
       throw new Error("Player names must not be empty");
     }
 
-    for (const playerName of playerNamesArray) {
-      if (typeof playerName !== "string") {
-        throw new Error("Player names must be strings");
-      }
-    }
-
     if (playerNamesArray.length > 4) {
       throw new Error("There can be no more than 4 players");
+    }
+
+    let allNamesAreUnique = true;
+    const encounteredNames = new Array<string>();
+    for (const playerName of playerNamesArray) {
+      if (encounteredNames.includes(playerName)) {
+        allNamesAreUnique = false;
+        break;
+      }
+      encounteredNames.push(playerName);
+    }
+
+    if (!allNamesAreUnique) {
+      throw new Error("Player names must be unique");
     }
   }
 }

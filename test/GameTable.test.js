@@ -29,6 +29,14 @@ describe('GameTable', () => {
     expect(() => {
       new GameTable(['1', '1']);
     }).toThrow("Player names must be unique");
+
+    expect(() => {
+      new GameTable(['1', '2', '3', '1']);
+    }).toThrow("Player names must be unique");
+
+    expect(() => {
+      new GameTable(['1', '2', '3', '4']);
+    }).not.toThrow("Player names must be unique");
   });
 });
 
