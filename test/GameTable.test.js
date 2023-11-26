@@ -113,5 +113,10 @@ describe('GameTable', () => {
       });
     expect(gameTable.isGameOver).toBe(true);
   });
+
+  it ('should have a method to thrown all unHeld dice', () => {
+    const gameTable = new GameTable(['111', '222', '333', '444']);
+    expect(gameTable.throwUnheldDice).toBeInstanceOf(Function);
+  });
 });
 
