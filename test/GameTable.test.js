@@ -19,9 +19,16 @@ describe('GameTable', () => {
     }).toThrow("Player names must not be empty");
   });
 
-  it ('should throw and error if more than 4 players are given', () => {
+  it ('should throw an error if more than 4 players are given', () => {
     expect(() => {
       new GameTable(['1', '2', '3', '4', '5']);
     }).toThrow("There can be no more than 4 players");
   });
+
+  it ('should throw an error if the playerNames are not unique', () => {
+    expect(() => {
+      new GameTable(['1', '1']);
+    }).toThrow("Player names must be unique");
+  });
 });
+
