@@ -58,4 +58,15 @@ describe('Player', () => {
     const player = new Player('Nickname');
     expect(player.allScoresSet).toBeDefined();
   });
+
+  it ('should return false for allScoresSet if not all scores are set', () => {
+    const mockedScoreList = jest
+      .spyOn(ScoreList.prototype, 'allScoresSet', 'get')
+      .mockImplementation(() => {
+        return false
+      });
+
+    const player = new Player('Nickname');
+    expect(player.allScoresSet).toBe(false);
+  });
 });
