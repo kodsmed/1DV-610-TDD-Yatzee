@@ -521,6 +521,12 @@ describe('ScoreList', () => {
     }
 
     expect(scoreList.score).toBe(12.49 * 6);
+
+    mockFaceValuesScoreStrategy = jest
+      .spyOn(FaceValuesScoreStrategy.prototype, 'score', 'get')
+      .mockImplementation(() => {
+        return 1;
+      });
   });
 
   it ('should sum up all scores correctly', () => {

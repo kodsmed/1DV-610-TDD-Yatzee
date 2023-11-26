@@ -65,6 +65,21 @@ export default class ScoreList {
     if (accumulatedScore >= 75) {
       accumulatedScore += 50;
     }
+    accumulatedScore += this.#aPair.score;
+    accumulatedScore += this.#twoPairs.score;
+    accumulatedScore += this.#threePairs.score;
+    accumulatedScore += this.#threeOfAKind.score;
+    accumulatedScore += this.#fourOfAKind.score;
+    accumulatedScore += this.#fiveOfAKind.score;
+    accumulatedScore += this.#smallStrait.score;
+    accumulatedScore += this.#largeStrait.score;
+    accumulatedScore += this.#fullStrait.score;
+    accumulatedScore += this.#house.score;
+    accumulatedScore += this.#villa.score;
+    accumulatedScore += this.#tower.score;
+    accumulatedScore += this.#chance.score;
+    accumulatedScore += this.#yatzee.score;
+
     return accumulatedScore;
   }
 
