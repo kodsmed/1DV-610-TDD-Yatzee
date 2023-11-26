@@ -38,5 +38,13 @@ describe('GameTable', () => {
       new GameTable(['1', '2', '3', '4']);
     }).not.toThrow("Player names must be unique");
   });
+
+  it ('should create a field of players with the given names', () => {
+    const gameTable = new GameTable(['111', '222', '333', '444']);
+    expect(gameTable.players[0].name).toBe('111');
+    expect(gameTable.players[1].name).toBe('222');
+    expect(gameTable.players[2].name).toBe('333');
+    expect(gameTable.players[3].name).toBe('444');
+  });
 });
 
