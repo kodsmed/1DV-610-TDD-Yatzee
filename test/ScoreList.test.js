@@ -136,6 +136,30 @@ const correctTypes = [
   new YatzeeScoreStrategy(new ThrowResult([1, 2, 3, 4, 5, 6]))
 ];
 
+const alternativeCorrectTypes = [
+  new FaceValuesScoreStrategy(new ThrowResult([2, 2, 2, 2, 2, 2])),
+  new FaceValuesScoreStrategy(new ThrowResult([2, 2, 2, 2, 2, 2])),
+  new FaceValuesScoreStrategy(new ThrowResult([2, 2, 2, 2, 2, 2])),
+  new FaceValuesScoreStrategy(new ThrowResult([2, 2, 2, 2, 2, 2])),
+  new FaceValuesScoreStrategy(new ThrowResult([2, 2, 2, 2, 2, 2])),
+  new FaceValuesScoreStrategy(new ThrowResult([2, 2, 2, 2, 2, 2])),
+  new PairsScoreStrategy(new ThrowResult([2, 2, 2, 2, 2, 2])),
+  new PairsScoreStrategy(new ThrowResult([2, 2, 2, 2, 2, 2])),
+  new PairsScoreStrategy(new ThrowResult([2, 2, 2, 2, 2, 2])),
+  new NOfAKindScoreStrategy('', new ThrowResult([2, 2, 2, 2, 2, 2])),
+  new NOfAKindScoreStrategy('', new ThrowResult([2, 2, 2, 2, 2, 2])),
+  new NOfAKindScoreStrategy('', new ThrowResult([2, 2, 2, 2, 2, 2])),
+  new StraitsScoreStrategy('', new ThrowResult([2, 2, 2, 2, 2, 2])),
+  new StraitsScoreStrategy('', new ThrowResult([2, 2, 2, 2, 2, 2])),
+  new StraitsScoreStrategy('', new ThrowResult([2, 2, 2, 2, 2, 2])),
+  new BuildingsScoreStrategy('', new ThrowResult([2, 2, 2, 2, 2, 2])),
+  new BuildingsScoreStrategy('', new ThrowResult([2, 2, 2, 2, 2, 2])),
+  new BuildingsScoreStrategy('', new ThrowResult([2, 2, 2, 2, 2, 2])),
+  new ChanceScoreStrategy(new ThrowResult([2, 2, 2, 2, 2, 2])),
+  new YatzeeScoreStrategy(new ThrowResult([2, 2, 2, 2, 2, 2]))
+];
+
+
 const properties = [
   'ones',
   'twos',
@@ -460,5 +484,26 @@ describe('ScoreList', () => {
 
       expect(unexpectedPropertyEncountered).toBe(false);
     });
+  });
+
+  it('should only set the ScoreStrategy if the score is null', () => {
+    const scoreList = new ScoreList();
+
+    for (let i = 0; i < properties.length; i++) {
+      scoreList[properties[i]] = correctTypes[i];
+    }
+
+    for (let i = 0; i < properties.length; i++) {
+      scoreList[properties[i]] = alternativeCorrectTypes[i];
+    }
+
+    let unexpectedPropertyEncountered = false;
+    for (let i = 0; i < properties.length; i++) {
+      if (scoreList[properties[i]] !== correctTypes[i]) {
+        unexpectedPropertyEncountered = true;
+      }
+    }
+
+    expect(unexpectedPropertyEncountered).toBe(false);
   });
 });
