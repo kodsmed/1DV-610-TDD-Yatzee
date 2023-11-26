@@ -56,6 +56,6 @@ describe('Player', () => {
 
   it ('should have a getter called allScoresSet', () => {
     const player = new Player('Nickname');
-    expect(player.isFinished).toBe(false);
+    expect(player.allScoresSet).toBeDefined();
   });
 });
