@@ -522,4 +522,22 @@ describe('ScoreList', () => {
 
     expect(scoreList.score).toBe(12.49 * 6);
   });
+
+  it ('should sum up all scores correctly', () => {
+    const scoreList = new ScoreList();
+
+    for (let i = 0; i < properties.length; i++) {
+      scoreList[properties[i]] = correctTypes[i];
+    }
+
+    expect(scoreList.score).toBe(
+        1 * 6 // FaceValuesScoreStrategy 1-6
+        + 10 * 3 // PairsScoreStrategy aPair, twoPairs, threePairs
+        + 100 * 3 // NOfAKindScoreStrategy threeOfAKind, fourOfAKind, fiveOfAKind
+        + 1000 * 3 // StraitsScoreStrategy smallStrait, largeStrait, fullStrait
+        + 10000 * 3 // BuildingsScoreStrategy house, villa, tower
+        + 100000 // ChanceScoreStrategy chance
+        + 1000000 // YatzeeScoreStrategy yatzee
+    );
+  });
 });
