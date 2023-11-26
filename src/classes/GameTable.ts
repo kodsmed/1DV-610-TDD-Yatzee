@@ -12,5 +12,11 @@ export default class GameTable {
     if (playerNamesArray.length < 1) {
       throw new Error("Player names must not be empty");
     }
+
+    for (const playerName of playerNamesArray) {
+      if (typeof playerName !== "string") {
+        throw new Error("Player names must be strings");
+      }
+    }
   }
 }
