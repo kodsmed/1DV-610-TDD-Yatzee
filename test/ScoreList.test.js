@@ -478,4 +478,33 @@ describe('ScoreList', () => {
 
     expect(scoreList.score).toBe(6);
   });
+
+  it('should add the 50 point bonus if all FaceValuesScoreStrategy sum up to 75 or more', () => {
+
+    let mockFaceValuesScoreStrategy = jest
+    .spyOn(FaceValuesScoreStrategy.prototype, 'score', 'get')
+    .mockImplementation(() => {
+      return 12.5;
+    });
+
+    let scoreList = new ScoreList();
+    for (let i = 0; i < 6; i++) {
+      scoreList[properties[i]] = new FaceValuesScoreStrategy(i + 1, new ThrowResult([2, 2, 2, 2, 2, 2]));
+    }
+
+    expect(scoreList.score).toBe(12.5 * 6 + 50);
+
+    mockFaceValuesScoreStrategy = jest
+    .spyOn(FaceValuesScoreStrategy.prototype, 'score', 'get')
+    .mockImplementation(() => {
+      return 13;
+    });
+
+    scoreList = new ScoreList();
+    for (let i = 0; i < 6; i++) {
+      scoreList[properties[i]] = new FaceValuesScoreStrategy(i + 1, new ThrowResult([2, 2, 2, 2, 2, 2]));
+    }
+
+    expect(scoreList.score).toBe(13 * 6 + 50);
+  });
 });
