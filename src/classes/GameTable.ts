@@ -1,13 +1,19 @@
 import Player from "./Player.js";
+import Die from "./DieClass.js";
 
 export default class GameTable {
   players: Array<Player> = new Array<Player>();
+  dice: Array<Die> = new Array<Die>();
 
   constructor(playerNames: Array<string>) {
     this.validatePlayerNames(playerNames);
     playerNames.forEach((playerName) => {
       this.players.push(new Player(playerName));
     });
+
+    for (let i = 0; i < 6; i++) {
+      this.dice.push(new Die());
+    }
   }
 
   private validatePlayerNames(playerNames: unknown) {
