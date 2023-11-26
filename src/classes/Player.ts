@@ -30,5 +30,9 @@ export default class Player {
     if (nickname.length < 3) {
       throw new Error("Player name must be at least 3 characters long");
     }
+
+    if (nickname.length > 32) {
+      throw new Error("Player name must not be longer than 32 characters");
+    }
   }
 }
