@@ -55,6 +55,9 @@ export default class ScoreList {
   }
 
   set ones(scoreStrategy: ScoreStrategy) {
+    if (this.#ones instanceof NullScoreStrategy === false) {
+      return;
+    }
     this.validateFaceValuesScoreStrategy(scoreStrategy);
     this.#ones = scoreStrategy;
   }
@@ -64,6 +67,9 @@ export default class ScoreList {
   }
 
   set twos(scoreStrategy: ScoreStrategy) {
+    if (this.#twos instanceof NullScoreStrategy === false) {
+      return;
+    }
     this.validateFaceValuesScoreStrategy(scoreStrategy);
     this.#twos = scoreStrategy;
   }
@@ -73,6 +79,9 @@ export default class ScoreList {
   }
 
   set threes(scoreStrategy: ScoreStrategy) {
+    if (this.#threes instanceof NullScoreStrategy === false) {
+      return;
+    }
     this.validateFaceValuesScoreStrategy(scoreStrategy);
     this.#threes = scoreStrategy;
   }
@@ -82,6 +91,9 @@ export default class ScoreList {
   }
 
   set fours(scoreStrategy: ScoreStrategy) {
+    if (this.#fours instanceof NullScoreStrategy === false) {
+      return;
+    }
     this.validateFaceValuesScoreStrategy(scoreStrategy);
     this.#fours = scoreStrategy;
   }
@@ -91,6 +103,9 @@ export default class ScoreList {
   }
 
   set fives(scoreStrategy: ScoreStrategy) {
+    if (this.#fives instanceof NullScoreStrategy === false) {
+      return;
+    }
     this.validateFaceValuesScoreStrategy(scoreStrategy);
     this.#fives = scoreStrategy;
   }
@@ -100,6 +115,9 @@ export default class ScoreList {
   }
 
   set sixes(scoreStrategy: ScoreStrategy) {
+    if (this.#sixes instanceof NullScoreStrategy === false) {
+      return;
+    }
     this.validateFaceValuesScoreStrategy(scoreStrategy);
     this.#sixes = scoreStrategy;
   }
@@ -109,6 +127,9 @@ export default class ScoreList {
   }
 
   set aPair(scoreStrategy: ScoreStrategy) {
+    if (this.#aPair instanceof NullScoreStrategy === false) {
+      return;
+    }
     this.validatePairsScoreStrategy(scoreStrategy);
     this.#aPair = scoreStrategy;
   }
@@ -118,6 +139,9 @@ export default class ScoreList {
   }
 
   set twoPairs(scoreStrategy: ScoreStrategy) {
+    if (this.#twoPairs instanceof NullScoreStrategy === false) {
+      return;
+    }
     this.validatePairsScoreStrategy(scoreStrategy);
     this.#twoPairs = scoreStrategy;
   }
@@ -127,6 +151,9 @@ export default class ScoreList {
   }
 
   set threePairs(scoreStrategy: ScoreStrategy) {
+    if (this.#threePairs instanceof NullScoreStrategy === false) {
+      return;
+    }
     this.validatePairsScoreStrategy(scoreStrategy);
     this.#threePairs = scoreStrategy;
   }
@@ -136,6 +163,9 @@ export default class ScoreList {
   }
 
   set threeOfAKind(scoreStrategy: ScoreStrategy) {
+    if (this.#threeOfAKind instanceof NullScoreStrategy === false) {
+      return;
+    }
     this.validateNOfAKindScoreStrategy(scoreStrategy);
     this.#threeOfAKind = scoreStrategy;
   }
@@ -145,6 +175,9 @@ export default class ScoreList {
   }
 
   set fourOfAKind(scoreStrategy: ScoreStrategy) {
+    if (this.#fourOfAKind instanceof NullScoreStrategy === false) {
+      return;
+    }
     this.validateNOfAKindScoreStrategy(scoreStrategy);
     this.#fourOfAKind = scoreStrategy;
   }
@@ -154,6 +187,9 @@ export default class ScoreList {
   }
 
   set fiveOfAKind(scoreStrategy: ScoreStrategy) {
+    if (this.#fiveOfAKind instanceof NullScoreStrategy === false) {
+      return;
+    }
     this.validateNOfAKindScoreStrategy(scoreStrategy);
     this.#fiveOfAKind = scoreStrategy;
   }
@@ -163,6 +199,9 @@ export default class ScoreList {
   }
 
   set smallStrait(scoreStrategy: ScoreStrategy) {
+    if (this.#smallStrait instanceof NullScoreStrategy === false) {
+      return;
+    }
     this.validateStraitsScoreStrategy(scoreStrategy);
     this.#smallStrait = scoreStrategy;
   }
@@ -172,6 +211,9 @@ export default class ScoreList {
   }
 
   set largeStrait(scoreStrategy: ScoreStrategy) {
+    if (this.#largeStrait instanceof NullScoreStrategy === false) {
+      return;
+    }
     this.validateStraitsScoreStrategy(scoreStrategy);
     this.#largeStrait = scoreStrategy;
   }
@@ -181,6 +223,9 @@ export default class ScoreList {
   }
 
   set fullStrait(scoreStrategy: ScoreStrategy) {
+    if (this.#fullStrait instanceof NullScoreStrategy === false) {
+      return;
+    }
     this.validateStraitsScoreStrategy(scoreStrategy);
     this.#fullStrait = scoreStrategy;
   }
@@ -190,6 +235,9 @@ export default class ScoreList {
   }
 
   set house(scoreStrategy: ScoreStrategy) {
+    if (this.#house instanceof NullScoreStrategy === false) {
+      return;
+    }
     this.validateBuildingsScoreStrategy(scoreStrategy);
     this.#house = scoreStrategy;
   }
@@ -199,6 +247,9 @@ export default class ScoreList {
   }
 
   set villa(scoreStrategy: ScoreStrategy) {
+    if (this.#villa instanceof NullScoreStrategy === false) {
+      return;
+    }
     this.validateBuildingsScoreStrategy(scoreStrategy);
     this.#villa = scoreStrategy;
   }
@@ -208,6 +259,9 @@ export default class ScoreList {
   }
 
   set tower(scoreStrategy: ScoreStrategy) {
+    if (this.#tower instanceof NullScoreStrategy === false) {
+      return;
+    }
     this.validateBuildingsScoreStrategy(scoreStrategy);
     this.#tower = scoreStrategy;
   }
@@ -217,6 +271,9 @@ export default class ScoreList {
   }
 
   set chance(scoreStrategy: ScoreStrategy) {
+    if (this.#chance instanceof NullScoreStrategy === false) {
+      return;
+    }
     this.validateChanceScoreStrategy(scoreStrategy);
     this.#chance = scoreStrategy;
   }
@@ -226,6 +283,9 @@ export default class ScoreList {
   }
 
   set yatzee(scoreStrategy: ScoreStrategy) {
+  if (this.#yatzee instanceof NullScoreStrategy === false) {
+      return
+    }
     this.validateYatzeeScoreStrategy(scoreStrategy);
     this.#yatzee = scoreStrategy;
   }
