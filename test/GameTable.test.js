@@ -1,5 +1,6 @@
 import { jest } from '@jest/globals';
 import GameTable from '../serve/compiled-js/classes/GameTable.js';
+import Player from '../serve/compiled-js/classes/Player.js';
 
 describe('GameTable', () => {
   it ('should create a new gameTable', () => {
