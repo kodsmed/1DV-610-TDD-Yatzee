@@ -20,7 +20,12 @@ export default class GameTable {
     return this.players[0];
   }
 
-  advanceToNextPlayer() {}
+  advanceToNextPlayer() {
+    const currentPlayer = this.players.shift();
+    if (currentPlayer) {
+      this.players.push(currentPlayer);
+    }
+  }
 
   private validatePlayerNames(playerNames: unknown) {
     if (!Array.isArray(playerNames)) {
