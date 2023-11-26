@@ -83,6 +83,10 @@ export default class ScoreList {
     return accumulatedScore;
   }
 
+  get allScoresSet() {
+    return false
+  }
+
   set ones(scoreStrategy: ScoreStrategy) {
     this.#ones = this.setFieldIfAvailableAndValidated(
         this.#ones,
