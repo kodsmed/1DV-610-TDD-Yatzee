@@ -1,7 +1,7 @@
 import { jest } from '@jest/globals';
-import GameTable from '../serve/compiled-js/classes/GameTable.js';
 import Player from '../serve/compiled-js/classes/Player.js';
-import { mock } from 'node:test';
+import Die, { DieState } from '../serve/compiled-js/classes/DieClass.js';
+import GameTable from '../serve/compiled-js/classes/GameTable.js';
 
 describe('GameTable', () => {
   it('should create a new gameTable', () => {
@@ -114,9 +114,37 @@ describe('GameTable', () => {
     expect(gameTable.isGameOver).toBe(true);
   });
 
-  it ('should have a method to thrown all unHeld dice', () => {
+  it('should have a method to thrown all unHeld dice', () => {
     const gameTable = new GameTable(['111', '222', '333', '444']);
     expect(gameTable.throwUnheldDice).toBeInstanceOf(Function);
+  });
+
+  it('throwUnheldDice should throw all unHeld dice and return a throwResult', () => {
+    const gameTable = new GameTable(['111', '222', '333', '444']);
+    const Die1 = new Die(() => { return 1 });
+    const Die2 = new Die(() => { return 2 });
+    const Die3 = new Die(() => { return 3 });
+    const Die4 = new Die(() => { return 4 });
+    const Die5 = new Die(() => { return 5 });
+    const Die6 = new Die(() => { return 6 });
+    Die1.setState(DieState.Held);
+    Die2.setState(DieState.Held);
+    Die3.setState(DieState.Held);
+    const mockedRoller = jest
+      .spyOn(Die.prototype, 'roller')
+      .mockImplementation(() => {
+        return 6;
+      });
+    gameTable.dice = [Die1, Die2, Die3, Die4, Die5, Die6];
+    const throwResult = gameTable.throwUnheldDice();
+    expect(throwResult).toBeInstanceOf(Array);
+    expect(throwResult.length).toBe(6);
+    expect(throwResult[0]).toBe(1);
+    expect(throwResult[1]).toBe(2);
+    expect(throwResult[2]).toBe(3);
+    expect(throwResult[3]).toBe(6);
+    expect(throwResult[4]).toBe(6);
+    expect(throwResult[5]).toBe(6);
   });
 });
 
