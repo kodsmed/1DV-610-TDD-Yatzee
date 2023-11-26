@@ -19,7 +19,7 @@ export default class Player {
   }
 
   get score () : number {
-    return 0;
+    return this.#scoreList.score;
   }
 
   private validateNickname(nickname: unknown) {
