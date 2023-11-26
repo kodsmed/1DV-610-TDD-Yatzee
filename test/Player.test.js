@@ -37,4 +37,9 @@ describe('Player', () => {
       new Player('0123456789012345678901234567890123');
     }).toThrow("Player name must not be longer than 32 characters");
   });
+
+  it ('should have a getter called score', () => {
+    const player = new Player('Nickname');
+    expect(player.score).toBe(0);
+  });
 });
