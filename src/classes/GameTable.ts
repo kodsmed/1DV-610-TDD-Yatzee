@@ -15,5 +15,9 @@ export default class GameTable {
     if (numberOfPlayers > 4) {
       throw new Error('The number of players must be less than 5');
     }
+
+    if (numberOfPlayers % 1 !== 0) {
+      throw new Error('The number of players must be an integer');
+    }
   }
 }
