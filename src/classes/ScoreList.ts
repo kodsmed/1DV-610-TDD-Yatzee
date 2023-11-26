@@ -55,7 +55,29 @@ export default class ScoreList {
   }
 
   get score() {
-    return 0;
+    let accumulatedScore = 0;
+    accumulatedScore += this.#ones.score;
+    accumulatedScore += this.#twos.score;
+    accumulatedScore += this.#threes.score;
+    accumulatedScore += this.#fours.score;
+    accumulatedScore += this.#fives.score;
+    accumulatedScore += this.#sixes.score;
+    accumulatedScore += this.#aPair.score;
+    accumulatedScore += this.#twoPairs.score;
+    accumulatedScore += this.#threePairs.score;
+    accumulatedScore += this.#threeOfAKind.score;
+    accumulatedScore += this.#fourOfAKind.score;
+    accumulatedScore += this.#fiveOfAKind.score;
+    accumulatedScore += this.#smallStrait.score;
+    accumulatedScore += this.#largeStrait.score;
+    accumulatedScore += this.#fullStrait.score;
+    accumulatedScore += this.#house.score;
+    accumulatedScore += this.#villa.score;
+    accumulatedScore += this.#tower.score;
+    accumulatedScore += this.#chance.score;
+    accumulatedScore += this.#yatzee.score;
+
+    return accumulatedScore;
   }
 
   set ones(scoreStrategy: ScoreStrategy) {
