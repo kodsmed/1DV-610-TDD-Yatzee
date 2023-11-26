@@ -23,7 +23,7 @@ export default class Player {
   }
 
   get allScoresSet() {
-    return 'a'
+    return this.#scoreList.allScoresSet;
   }
 
   private validateNickname(nickname: unknown) {
