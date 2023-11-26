@@ -546,4 +546,16 @@ describe('ScoreList', () => {
         + 1000000 // YatzeeScoreStrategy yatzee
     );
   });
+
+  describe ('allScoresSet', () => {
+    it ('should return false if all scores are not set', () => {
+      const scoreList = new ScoreList();
+
+      for (let i = 0; i < properties.length - 1; i++) {
+        scoreList[properties[i]] = correctTypes[i];
+      }
+
+      expect(scoreList.allScoresSet).toBe(false);
+    });
+  });
 });
