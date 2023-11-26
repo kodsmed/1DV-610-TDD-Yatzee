@@ -54,6 +54,10 @@ export default class ScoreList {
     this.#yatzee = new NullScoreStrategy();
   }
 
+  get score() {
+    return 0;
+  }
+
   set ones(scoreStrategy: ScoreStrategy) {
     this.#ones = this.setFieldIfAvailableAndValidated(
         this.#ones,
