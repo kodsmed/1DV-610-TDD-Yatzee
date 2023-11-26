@@ -18,4 +18,8 @@ describe('GameTable', () => {
   it ('should throw an error if the number of players is greater than 4', () => {
     expect(() => new GameTable(5)).toThrowError('The number of players must be less than 5');
   });
+
+  it ('should throw an error if the number of players is not an integer', () => {
+    expect(() => new GameTable(1.5)).toThrowError('The number of players must be an integer');
+  });
 });
