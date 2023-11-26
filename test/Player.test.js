@@ -35,6 +35,6 @@ describe('Player', () => {
   it ('should throw an error if the name is too long (more than 32 characters)', () => {
     expect(() => {
       new Player('0123456789012345678901234567890123');
-    }).toThrow("Player name must be at most 32 characters long");
+    }).toThrow("Player name must not be longer than 32 characters");
   });
 });
