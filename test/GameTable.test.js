@@ -52,5 +52,10 @@ describe('GameTable', () => {
     const gameTable = new GameTable(['111', '222', '333', '444']);
     expect(gameTable.dice.length).toBe(6);
   });
+
+  it ('should have a getter called currentPlayer', () => {
+    const gameTable = new GameTable(['111', '222', '333', '444']);
+    expect(gameTable.currentPlayer).toBeInstanceOf(Player);
+  });
 });
 
