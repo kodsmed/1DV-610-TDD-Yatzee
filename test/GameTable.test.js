@@ -94,5 +94,10 @@ describe('GameTable', () => {
     }
     expect(gameTable.round).toBe(3);
   });
+
+  it ('should have a getter called isGameOver', () => {
+    const gameTable = new GameTable(['111', '222', '333', '444']);
+    expect(gameTable.isGameOver).toBe(false);
+  });
 });
 
