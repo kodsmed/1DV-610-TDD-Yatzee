@@ -18,14 +18,10 @@ export default class GameTable {
   }
 
   get currentPlayer(): Player {
-    return this.players[0];
+    return this.players[this.#turns % this.players.length];
   }
 
   advanceToNextPlayer() {
-    const currentPlayer = this.players.shift();
-    if (currentPlayer) {
-      this.players.push(currentPlayer);
-    }
     this.#turns++;
   }
 
@@ -63,7 +59,12 @@ export default class GameTable {
   }
 
   get isGameOver(): boolean {
-    let isGameOver = false;
-    return isGameOver;
+    let numberOfPlayersWithAllScoresSet = 0;
+    for (const player of this.players) {
+      if (player.allScoresSet) {
+        numberOfPlayersWithAllScoresSet++;
+      }
+    }
+    return numberOfPlayersWithAllScoresSet === this.players.length;
   }
 }
