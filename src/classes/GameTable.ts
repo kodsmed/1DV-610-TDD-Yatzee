@@ -27,6 +27,10 @@ export default class GameTable {
     }
   }
 
+  get round(): number {
+    return 1;
+  }
+
   private validatePlayerNames(playerNames: unknown) {
     if (!Array.isArray(playerNames)) {
       throw new Error("Player names must be an array");
