@@ -76,5 +76,10 @@ describe('GameTable', () => {
     gameTable.advanceToNextPlayer();
     expect(gameTable.currentPlayer.name).toBe('111');
   });
+
+  it ('should have a getter called round', () => {
+    const gameTable = new GameTable(['111', '222', '333', '444']);
+    expect(gameTable.round).toBe(1);
+  });
 });
 
