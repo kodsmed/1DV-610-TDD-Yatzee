@@ -47,5 +47,10 @@ describe('GameTable', () => {
     expect(gameTable.players[3].name).toBe('444');
     expect(gameTable.players.length).toBe(4);
   });
+
+  it ('should create a field of six dice', () => {
+    const gameTable = new GameTable(['111', '222', '333', '444']);
+    expect(gameTable.dice.length).toBe(6);
+  });
 });
 
