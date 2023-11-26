@@ -1,7 +1,7 @@
 import ThrowResult from './ThrowResult.js';
 import ScoreStrategy from './../ScoreStrategy.js';
 
-export default class FacesValuesScoreStrategy implements ScoreStrategy{
+export default class FaceValuesScoreStrategy implements ScoreStrategy{
   #expectedNumber: number;
   #throwResult: ThrowResult;
 
