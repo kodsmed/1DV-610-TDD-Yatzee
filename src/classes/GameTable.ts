@@ -67,4 +67,7 @@ export default class GameTable {
     }
     return numberOfPlayersWithAllScoresSet === this.players.length;
   }
+
+  throwUnheldDice() {
+  }
 }
