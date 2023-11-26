@@ -18,6 +18,10 @@ export default class Player {
     return this.#scoreList;
   }
 
+  get score () : number {
+    return 0;
+  }
+
   private validateNickname(nickname: unknown) {
     if (typeof nickname !== "string") {
       throw new Error("Player name must be a string");
