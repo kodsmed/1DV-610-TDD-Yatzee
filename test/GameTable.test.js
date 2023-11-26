@@ -6,4 +6,8 @@ describe('GameTable', () => {
     const gameTable = new GameTable(1);
     expect(gameTable).toBeInstanceOf(GameTable);
   });
+
+  it ('should throw an error if the number of players is not a number', () => {
+    expect(() => new GameTable('1')).toThrowError('The number of players must be a number');
+  });
 });
