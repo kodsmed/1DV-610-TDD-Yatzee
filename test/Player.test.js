@@ -13,4 +13,10 @@ describe('Player', () => {
     const player = new Player('Nickname');
     expect(player.scoreList).toBeInstanceOf(ScoreList);
   });
+
+  it ('should throw an error if the name is not a string', () => {
+    expect(() => {
+      new Player(1);
+    }).toThrow("Player name must be a string");
+  });
 });
