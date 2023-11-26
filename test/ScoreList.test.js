@@ -514,4 +514,12 @@ describe('ScoreList', () => {
     });
   });
 
+  it('should return 60 if all FaceValuesScoreStrategy are set to 10', () => {
+    const scoreList = new ScoreList();
+    for (let i = 0; i < 6; i++) {
+      scoreList[properties[i]] = new FaceValuesScoreStrategy(new ThrowResult([1, 2, 3, 4, 5, 6]));
+    }
+
+    expect(scoreList.score).toBe(60);
+  });
 });
