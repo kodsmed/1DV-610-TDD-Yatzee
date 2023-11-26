@@ -4,6 +4,7 @@ import Die from "./DieClass.js";
 export default class GameTable {
   players: Array<Player> = new Array<Player>();
   dice: Array<Die> = new Array<Die>();
+  #turns: number = 0;
 
   constructor(playerNames: Array<string>) {
     this.validatePlayerNames(playerNames);
@@ -25,10 +26,11 @@ export default class GameTable {
     if (currentPlayer) {
       this.players.push(currentPlayer);
     }
+    this.#turns++;
   }
 
   get round(): number {
-    return 1;
+    return Math.floor(this.#turns / this.players.length) + 1;
   }
 
   private validatePlayerNames(playerNames: unknown) {

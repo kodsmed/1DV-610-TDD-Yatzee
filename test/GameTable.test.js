@@ -81,5 +81,18 @@ describe('GameTable', () => {
     const gameTable = new GameTable(['111', '222', '333', '444']);
     expect(gameTable.round).toBe(1);
   });
+
+  it ('round should increase by 1 after each player has played', () => {
+    const gameTable = new GameTable(['111', '222', '333', '444']);
+    expect(gameTable.round).toBe(1);
+    for (let i = 0; i < 4; i++) {
+      gameTable.advanceToNextPlayer();
+    }
+    expect(gameTable.round).toBe(2);
+    for (let i = 0; i < 4; i++) {
+      gameTable.advanceToNextPlayer();
+    }
+    expect(gameTable.round).toBe(3);
+  });
 });
 
