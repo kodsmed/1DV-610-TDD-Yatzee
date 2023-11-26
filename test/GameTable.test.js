@@ -14,4 +14,8 @@ describe('GameTable', () => {
   it ('should throw an error if the number of players is less than 1', () => {
     expect(() => new GameTable(0)).toThrowError('The number of players must be greater than 0');
   });
+
+  it ('should throw an error if the number of players is greater than 4', () => {
+    expect(() => new GameTable(5)).toThrowError('The number of players must be less than 5');
+  });
 });
