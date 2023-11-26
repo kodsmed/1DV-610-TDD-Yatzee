@@ -42,4 +42,20 @@ describe('Player', () => {
     const player = new Player('Nickname');
     expect(player.score).toBe(0);
   });
+
+  it ('score should be the sum of all scores in the scoreList', () => {
+    const mockedScoreList = jest
+      .spyOn(ScoreList.prototype, 'score', 'get')
+      .mockImplementation(() => {
+        return 21
+      });
+
+    const player = new Player('Nickname');
+    expect(player.score).toBe(21);
+  });
+
+  it ('should have a getter called allScoresSet', () => {
+    const player = new Player('Nickname');
+    expect(player.isFinished).toBe(false);
+  });
 });
