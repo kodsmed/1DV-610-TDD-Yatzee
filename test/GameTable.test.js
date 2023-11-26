@@ -61,7 +61,7 @@ describe('GameTable', () => {
 
   it ('should have a method called advanceToNextPlayer', () => {
     const gameTable = new GameTable(['111', '222', '333', '444']);
-    expect(gameTable.advancePlayer).toBeInstanceOf(Function);
+    expect(gameTable.advanceToNextPlayer).toBeInstanceOf(Function);
   });
 });
 

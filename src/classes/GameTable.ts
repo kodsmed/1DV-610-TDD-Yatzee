@@ -20,6 +20,8 @@ export default class GameTable {
     return this.players[0];
   }
 
+  advanceToNextPlayer() {}
+
   private validatePlayerNames(playerNames: unknown) {
     if (!Array.isArray(playerNames)) {
       throw new Error("Player names must be an array");
