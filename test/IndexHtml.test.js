@@ -72,4 +72,12 @@ describe('index.html', () => {
     expect(element.tagName.toLowerCase()).toBe('input');
     expect(buttonElement.tagName.toLowerCase()).toBe('button');
   })
+
+  it('should load the main js file index.js in the head element', () => {
+    const headElement = document.querySelector('head');
+    expect(headElement).not.toBeNull();
+    const scriptElement = headElement.querySelector('script');
+    expect(scriptElement).not.toBeNull();
+    expect(scriptElement.src).toBe('./compiled-js/index.js');
+  })
 });
