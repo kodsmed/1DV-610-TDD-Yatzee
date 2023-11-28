@@ -46,14 +46,20 @@ describe('index.html', () => {
     const options = selectElement.querySelectorAll('option');
     expect(options.length).toBe(4);
     let unexpectedTextContentDetected = false;
+    let unexepectedValueDetected = false;
     for (let index = 0; index < options.length; index++) {
       if (options[index].textContent != `${index + 1} players`) {
         console.log('enountered unexpected option text in select element:' + options[index].textContent)
         unexpectedTextContentDetected = true;
       }
+      if (options[index].value != index + 1) {
+        console.log('encountered unexpected option value in select element:' + options[index].value)
+        unexepectedValueDetected = true
+      }
     }
 
     expect(unexpectedTextContentDetected).toBe(false);
+    expect(unexepectedValueDetected).toBe(false);
     
   })
 });
