@@ -33,4 +33,9 @@ describe('index.js', () => {
     const inputElement = htmlDoc.querySelector('#playerName');
     expect(inputElement.style.display).toBe('none');
   });
+
+  it('should set the textContent of the submit button to "Start"', () => {
+    const buttonElement = htmlDoc.querySelector('button');
+    expect(buttonElement.textContent).toBe('Start');
+  })
 });
