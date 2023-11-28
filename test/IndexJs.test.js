@@ -42,52 +42,6 @@ describe('index.js', () => {
     expect(buttonText).toBe('Start');
   });
 
-  // it('should call startGame(x) where x is the value of the select element when the button labled "Start" is clicked', async () => {
-
-  //   let thirdOptionElement = page.$eval('select', selectElement => {
-  //     const optionsElement = selectElement.querySelectorAll('option')
-  //     for (let i = 0; i < optionsElement.length; i++) {
-  //       if (optionsElement[i].value == 3 && optionsElement.textContent == '3 players') {
-  //         thirdOptionElement = optionsElement[i];
-  //         break;
-  //       }
-  //     }
-  //   })
-  //   thirdOptionElement.selected = true;
-
-  //   const eventName = 'startNewGame';
-  //   const secondsToWaitForEvent = 10;
-  //   let eventDetected = false;
-  //   let eventDetailValue = -1;
-  
-  //   // add event listener and wait for event to fire before returning
-  //   await page.evaluate(function(eventName) {
-  //         window.addEventListener(eventName, function(e) {
-  //           eventDetected = true;
-  //           eventDetailValue = e.detail.value || -1;
-  //           console.log('cought event')
-  //         });
-  //   });
-
-  //   page.evaluate(() => {
-  //     const elem = document.querySelector('button')
-  //     elem.addEventListener('click', () => {
-  //       eventDetected = true
-  //       eventDetailValue = -3
-  //     })
-  //   })
-    
-
-  //   // "click" the button
-  //   const buttonElement = await page.$('button')
-  //   await page.click('button')
-
-
-
-  //   expect(eventDetected).toBe(true);
-  //   expect(eventDetailValue).toBe(3);
-
-  // }, 100000)
   it('should call startGame(x) where x is the value of the select element when the button labeled "Start" is clicked', async () => {
     for (let i = 0; i < 4; i++) {
       // Select the third option
@@ -122,5 +76,19 @@ describe('index.js', () => {
 
     }
   });
+
+  it('should show the input field for a player name and hide numberOfPlayers select element after selection.', async () => {
+    const selection = await page.select('select', '1');
+
+    await page.click('button');
+    
+    //wait 1 second
+    await page.waitForTimeout(1000)
+
+    const inputDisplayStyle = await page.$eval('#playerName', el => el.style.display);
+    expect(inputDisplayStyle).not.toBe('none');
+    const selectDisplayStyle = await page.$eval('select', el => el.style.display);
+    expect(selectDisplayStyle).toBe('none');
+  })
   
 }, 100000);
