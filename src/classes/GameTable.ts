@@ -69,8 +69,7 @@ export default class GameTable {
     return numberOfPlayersWithAllScoresSet === this.players.length;
   }
 
-  throwUnheldDice(): ThrowResult {
-    const randomCallback = () => {return (Math.floor(Math.random() * 6) + 1)};
+  throwUnheldDice(randomCallback: Function): ThrowResult {
     for (const die of this.dice) {
       die.roll(randomCallback);
     }

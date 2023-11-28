@@ -121,6 +121,7 @@ describe('GameTable', () => {
   });
 
   it('throwUnheldDice should throw all unHeld dice and return a throwResult', () => {
+    let returnFixedNumber = () => {return 6}
     const gameTable = new GameTable(['111', '222', '333', '444']);
     const Die1 = new Die(() => { return 1 });
     const Die2 = new Die(() => { return 2 });
