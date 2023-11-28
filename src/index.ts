@@ -28,7 +28,13 @@ export default class GameEngine{
   }
 
   startGame() {
-    console.log('Entered startGame')
+    const playerNameInputField = document.querySelector('#playerName') as HTMLInputElement
+
+    playerNameInputField.style.display = 'block'
+    
+    const selectionField = document.querySelector('#numberOfPlayers') as HTMLInputElement
+
+    selectionField.style.display = 'none'
   }
 }
 
