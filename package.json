@@ -11,7 +11,6 @@
     "build": "vite build",
     "start": "vite",
     "test": "npx --node-options=--experimental-vm-modules jest || exit 0"
-
   },
   "repository": {
     "type": "git",
@@ -37,5 +36,8 @@
     "jest-environment-jsdom": "^29.7.0",
     "typescript": "^5.2.2",
     "vite": "^4.5.0"
+  },
+  "dependencies": {
+    "@testing-library/jest-dom": "^6.1.4"
   }
 }

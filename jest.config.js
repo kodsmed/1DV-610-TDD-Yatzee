@@ -1,5 +1,5 @@
 export default {
-  testEnvironment: 'node',
+  testEnvironment: 'jest-environment-jsdom',
   moduleFileExtensions: ['js', 'mjs'],
   testMatch: ['**/test/**/*.test.js'],
   //verbose: true,
