@@ -87,5 +87,28 @@ describe('index.js', () => {
     const selectDisplayStyle = await page.$eval('select', el => el.style.display);
     expect(selectDisplayStyle).toBe('none');
   })
+
+  it('the button text should reflect the action', async () => {
+    await page.select('select', '3');
+
+    await page.clíck('button');
+    let buttonText = await page.$eval('button', el => el.textContent);
+    expect(buttonText).toBe('Submit player1s name');
+
+    await page.click('input[type=text');
+    await page.type('input[type=text]', 'Alice');
+    await page.click('button');
+
+    buttonText = await page.$eval('button', el => el.textContent);
+    expect(buttonText).toBe('Submit player2s name');
+
+    await page.click('input[type=text');
+    await page.type('input[type=text]', 'Bob');
+    await page.click('button');
+
+    buttonText = await page.$eval('button', el => el.textContent);
+    expect(buttonText).toBe('Submit player3s name');
+
+  })
   
 }, 100000);
