@@ -62,11 +62,14 @@ describe('index.html', () => {
     expect(unexepectedValueDetected).toBe(false);
   })
 
-  it('should have an input field for entering a player name', () => {
+  it('should have an input field and a button for entering a player name', () => {
     const containingDiv = document.querySelector('#selectPlayers');
     const element = containingDiv.querySelector('#playerName');
+    const buttonElement = containingDiv.querySelector('#nameSubmit');
     expect(element).not.toBeNull();
+    expect(buttonElement).not.toBeNull();
     expect(element.type).toBe('text');
     expect(element.tagName.toLowerCase()).toBe('input');
+    expect(buttonElement.tagName.toLowerCase()).toBe('button');
   })
 });
