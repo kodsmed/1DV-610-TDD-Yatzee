@@ -1,13 +1,15 @@
-import { TextEncoder, TextDecoder } from 'util';
+import { TextEncoder, TextDecoder } from 'util'
+global.TextEncoder = TextEncoder
+// @ts-expect-error
+global.TextDecoder = TextDecoder
 import { JSDOM } from 'jsdom';
-
-Object.assign(global, { TextDecoder, TextEncoder });
 
 describe('index.html', () => {
   let document;
 
   beforeAll(async () => {
-    const dom = await JSDOM.fromFile('../serve/index.html')
+    const dom = await JSDOM.fromFile('./serve/index.html')
+    document = dom.window.document
   });
 
   it('should a H1 element with the id "header"', () => {
