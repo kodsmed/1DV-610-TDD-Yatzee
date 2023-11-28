@@ -78,6 +78,7 @@ describe('index.html', () => {
     expect(headElement).not.toBeNull();
     const scriptElement = headElement.querySelector('script');
     expect(scriptElement).not.toBeNull();
-    expect(scriptElement.src).toBe('./compiled-js/index.js');
+    expect(scriptElement.type).toBe('module');
+    expect(scriptElement.src.endsWith('/compiled-js/index.js')).toBe(true);
   })
 });
