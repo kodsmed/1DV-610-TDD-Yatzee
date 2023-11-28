@@ -60,6 +60,13 @@ describe('index.html', () => {
 
     expect(unexpectedTextContentDetected).toBe(false);
     expect(unexepectedValueDetected).toBe(false);
-    
+  })
+
+  it('should have an input field for entering a player name', () => {
+    const containingDiv = document.querySelector('#selectPlayers');
+    const element = containingDiv.querySelector('#playerName');
+    expect(element).not.toBeNull();
+    expect(element.type).toBe('text');
+    expect(element.tagName.toLowerCase()).toBe('input');
   })
 });
