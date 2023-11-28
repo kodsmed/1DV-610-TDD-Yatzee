@@ -17,4 +17,10 @@ describe('index.html', () => {
     expect(element).not.toBeNull();
     expect(element.tagName.toLowerCase()).toBe('h1');
   });
+
+  it('should have a div element with the id dice', () => {
+    const element = document.querySelector('#dice');
+    expect(element).not.toBeNull();
+    expect(element.tagName.toLowerCase()).toBe('div');
+  })
 });
