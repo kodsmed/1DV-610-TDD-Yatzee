@@ -19,4 +19,10 @@ describe('index.html', () => {
     expect(element).not.toBeNull();
     expect(element.tagName.toLowerCase()).toBe('div');
   })
+
+  it('should have a div element with the id gameTable', () => {
+    const element = document.querySelector('#gameTable');
+    expect(element).not.toBeNull();
+    expect(element.tagName.toLowerCase()).toBe('div');
+  })
 });
