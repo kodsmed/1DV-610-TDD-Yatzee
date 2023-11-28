@@ -25,4 +25,10 @@ describe('index.html', () => {
     expect(element).not.toBeNull();
     expect(element.tagName.toLowerCase()).toBe('div');
   })
+
+  it('should have a div element with the id selectPlayers', () => {
+    const element = document.querySelector('#selectPlayers');
+    expect(element).not.toBeNull();
+    expect(element.tagName.toLowerCase()).toBe('div');
+  })
 });
