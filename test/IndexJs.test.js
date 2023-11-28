@@ -2,6 +2,7 @@ import puppeteer from 'puppeteer';
 import path from 'path';
 import fs from 'fs';
 import { jest } from '@jest/globals'
+import { vitePort } from '../setup.jest.js';
 
 describe('index.js', () => {
   let browser;
@@ -14,17 +15,12 @@ describe('index.js', () => {
     page = await browser.newPage();
     // Navigate to your local HTML file and wait for the script to finish
     const pathToHtml = `${path.resolve('./serve/index.html')}`;
-    await page.goto(pathToHtml, { waitUntil: 'load' });
-
-    const scriptContent = fs.readFileSync(`${path.resolve('./serve/compiled-js/index.js')}`, 'utf-8');
-    await page.evaluate(scriptContent => {
-      const scriptEl = document.createElement('script');
-      scriptEl.type = 'module';
-      scriptEl.textContent = scriptContent;
-      document.body.appendChild(scriptEl);
-    }, scriptContent);
-
+    await page.goto(`http://localhost:${vitePort}/`, { waitUntil: 'load' });
   });
+
+  beforeEach(async () =>{
+    await page.reload();
+  })
 
   afterAll(async () => {
     await page.close();
@@ -44,20 +40,15 @@ describe('index.js', () => {
 
   it('should call startGame(x) where x is the value of the select element when the button labeled "Start" is clicked', async () => {
     for (let i = 0; i < 4; i++) {
+      await page.reload();
       // Select the third option
       const selection = await page.select('select', `${i + 1}`);
-  
-      // Set up a function to capture the event data
-      const eventData = page.evaluate(() => {
-        return new Promise((resolve) => {
-          document.querySelector('button').addEventListener('click', () => {
-            const eventDetailValue = document.querySelector('select').value;
-            resolve(eventDetailValue);
-          });
-        });
-      });
+      //const selection = await page.select('select', '3');
 
-      const eventDetailData = page.evaluate(() => {
+      let eventDetailData
+      async function addEventListeners() {
+      // Set up a function to capture the event data
+      eventDetailData = page.evaluate(() => {
         return new Promise((resolve) => {
           window.addEventListener('startNewGame', (event) => {
             const eventDetailDataValue = event.detail
@@ -65,14 +56,19 @@ describe('index.js', () => {
           });
         });
       });
-  
+      }
+
       // "click" the button
+      await addEventListeners();
+      await page.waitForSelector('button');
+      // wait 600ms for the event to fire
+      await delay(600);
       await page.click('button');
 
-  
+
       // Check if the event data matches expected value
-      // expect(await eventData).toBe('3');
-      expect(await eventDetailData).toEqual(selection[0])
+       //expect(await eventDetailData).toBe('3');
+       expect(await eventDetailData).toEqual(selection[0])
 
     }
   });
@@ -91,24 +87,31 @@ describe('index.js', () => {
   it('the button text should reflect the action', async () => {
     await page.select('select', '3');
 
-    await page.clíck('button');
-    let buttonText = await page.$eval('button', el => el.textContent);
+    await page.click('button');
+    await delay(500)
+    const buttonText = await page.$eval('button', el => el.textContent);
     expect(buttonText).toBe('Submit player1s name');
 
     await page.click('input[type=text');
     await page.type('input[type=text]', 'Alice');
     await page.click('button');
-
-    buttonText = await page.$eval('button', el => el.textContent);
-    expect(buttonText).toBe('Submit player2s name');
+    await delay(500);
+    const buttonText2 = await page.$eval('button', el => el.textContent);
+    expect(buttonText2).toBe('Submit player2s name');
 
     await page.click('input[type=text');
     await page.type('input[type=text]', 'Bob');
     await page.click('button');
-
-    buttonText = await page.$eval('button', el => el.textContent);
-    expect(buttonText).toBe('Submit player3s name');
+    await delay(500);
+    const buttonText3 = await page.$eval('button', el => el.textContent);
+    expect(buttonText3).toBe('Submit player3s name');
 
   })
-  
+
 }, 100000);
+
+function delay(time) {
+  return new Promise(function(resolve) {
+      setTimeout(resolve, time)
+  });
+}

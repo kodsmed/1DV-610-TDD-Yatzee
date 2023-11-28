@@ -32,5 +32,10 @@ written in HTML and CSS. Our project follows this standard, and the UI is writte
 2. Run `npm install` to install dependencies
 3. Run `npm run build-ts` to build the project from TypeScript to JavaScript
 4. Run `npm run test` to run the tests
-5. Run `npm run coverage` to run the coverage tests
 6. Run `npm run start` to start the project
+
+### Testing
+
+1. Start the vite server by running `npm start`
+2. Wait for the startup, if it does not start on **5173**, update the port in setup.jest.js
+3. Run `npm run test`
