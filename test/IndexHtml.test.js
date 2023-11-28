@@ -31,4 +31,13 @@ describe('index.html', () => {
     expect(element).not.toBeNull();
     expect(element.tagName.toLowerCase()).toBe('div');
   })
+
+  describe('"selectPlayers division"', () => {
+    it('should contain a dropdown select element with the id "numberOfPlayers"', () => {
+      const containingDiv = document.querySelector('#selectPlayers');
+      const element = containingDiv.querySelector('#numberOfPlayers');
+      expect(element).not.toBeNull();
+      expect(element.tagName.toLowerCase()).toBe('select');
+    })
+  })
 });
