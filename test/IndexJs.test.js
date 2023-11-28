@@ -81,9 +81,6 @@ describe('index.js', () => {
     const selection = await page.select('select', '1');
 
     await page.click('button');
-    
-    //wait 1 second
-    await page.waitForTimeout(1000)
 
     const inputDisplayStyle = await page.$eval('#playerName', el => el.style.display);
     expect(inputDisplayStyle).not.toBe('none');
