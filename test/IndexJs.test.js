@@ -1,41 +1,42 @@
-import { JSDOM } from 'jsdom';
+import puppeteer from 'puppeteer';
+import path from 'path';
 import fs from 'fs';
-import path, { dirname }  from 'path';
 
 describe('index.js', () => {
-  let htmlDoc;
-  let window;
+  let browser;
+  let page;
 
   beforeAll(async () => {
-    const htmlDom = await JSDOM.fromFile('./serve/index.html', { 
-      runScripts: "dangerously",
-      resources: "usable",
-    });
+    // Launch the browser
+    browser = await puppeteer.launch({headless: "new"});
+    // Create a new page
+    page = await browser.newPage();
+    // Navigate to your local HTML file and wait for the script to finish
+    const pathToHtml = `${path.resolve('./serve/index.html')}`;
+    await page.goto(pathToHtml, { waitUntil: 'load' });
 
-    window = htmlDom.window;
-    htmlDoc = window.document;
+    const scriptContent = fs.readFileSync(`${path.resolve('./serve/compiled-js/index.js')}`, 'utf-8');
+    await page.evaluate(scriptContent => {
+      const scriptEl = document.createElement('script');
+      scriptEl.type = 'module';
+      scriptEl.textContent = scriptContent;
+      document.body.appendChild(scriptEl);
+    }, scriptContent);
 
-    const scriptPath = path.resolve('./serve/compiled-js/index.js');
-    const scriptContent = fs.readFileSync(scriptPath, 'utf-8');
-    const scriptEl = htmlDoc.createElement('script');
-    scriptEl.textContent = scriptContent;
-    htmlDoc.body.appendChild(scriptEl);
-
-    // Wait for the script to be executed
-    await new Promise((resolve) => {
-      window.onload = resolve;
-    });
-
-    htmlDoc = window.document;
   });
 
-  it('should hide the name input until number of players have been selected', () => {
-    const inputElement = htmlDoc.querySelector('#playerName');
-    expect(inputElement.style.display).toBe('none');
+  afterAll(async () => {
+    // Close the browser when done
+    await browser.close();
   });
 
-  it('should set the textContent of the submit button to "Start"', () => {
-    const buttonElement = htmlDoc.querySelector('button');
-    expect(buttonElement.textContent).toBe('Start');
-  })
+  it('should hide the name input until number of players have been selected', async () => {
+    const displayStyle = await page.$eval('#playerName', el => el.style.display);
+    expect(displayStyle).toBe('none');
+  });
+
+  it('should set the textContent of the submit button to "Start"', async () => {
+    const buttonText = await page.$eval('button', el => el.textContent);
+    expect(buttonText).toBe('Start');
+  });
 });

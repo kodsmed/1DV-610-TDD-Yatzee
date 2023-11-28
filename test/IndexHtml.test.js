@@ -1,3 +1,6 @@
+/**
+ * @testEnvironment jsdom
+ */
 import { JSDOM } from 'jsdom';
 
 describe('index.html', () => {

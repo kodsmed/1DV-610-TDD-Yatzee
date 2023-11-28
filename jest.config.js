@@ -7,7 +7,7 @@ export default {
      TextEncoder: TextEncoder,
      TextDecoder: TextDecoder
   },
-  testEnvironment: 'jest-environment-jsdom',
+  testEnvironment: 'node',
   moduleFileExtensions: ['js', 'mjs'],
   testMatch: ['**/test/**/*.test.js'],
   //verbose: true,
